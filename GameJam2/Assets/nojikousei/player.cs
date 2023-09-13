@@ -14,7 +14,8 @@ public class player : MonoBehaviour
     float upFly = 0.01f;//上昇するスピード
     public GameObject camera;
     Camera maincamera;
-    public GameObject satoruEfect;
+    public GameObject satoruEfect;//ビームのエフェクト
+    public GameObject satorusppon;//生成する場所
     //Vector3 angle;//カメラの縦アングル
     //public float anglestop=30f;//アングル制御
     // Start is called before the first frame update
@@ -111,7 +112,8 @@ public class player : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             //攻撃処理をここに書く。
-            Instantiate(satoruEfect, transform.forward, Quaternion.identity);
+            Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
+
         }
     }
     //ズーム
