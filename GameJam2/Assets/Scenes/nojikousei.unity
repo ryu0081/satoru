@@ -371,6 +371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 1
   camera: {fileID: 1534217589}
+  satoruEfect: {fileID: 5448953145663348350, guid: 8318199688ca7274f953735fec96aa21,
+    type: 3}
 --- !u!65 &1427617324
 BoxCollider:
   m_ObjectHideFlags: 0
