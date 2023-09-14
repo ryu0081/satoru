@@ -8,17 +8,22 @@ public class RedHollowControl : MonoBehaviour
     public float hue = 0;
 
     Animator animator;
+    //GameObject player;
+    float time = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
+        //player = GameObject.Find("Player");
+        //player.transform.parent = gameObject.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.GetChild(0).GetComponent<HueControl>().hue = hue;
+        Destroy(gameObject, 10f);
     }
 
     public void Play_Charging() {
