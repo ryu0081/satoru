@@ -20,7 +20,7 @@ public class VerticalCamera : MonoBehaviour
     }
     void Verticalangle()
     {
-        angle += new Vector3(Input.GetAxisRaw("Mouse Y"),0 , 0);
+        angle += new Vector3(Input.GetAxisRaw("Mouse Y"), 0, 0);
         transform.localEulerAngles= -angle;
         if (angle.x >= anglestop)
         {
