@@ -14,7 +14,12 @@ public class player : MonoBehaviour
     float upFly = 0.01f;//上昇するスピード
     public GameObject camera;
     Camera maincamera;
-    public GameObject satoruEfect;
+    public GameObject satoruEfect;//ビームのエフェクト
+    public GameObject satorusppon;//生成する場所
+    bool attack = false;
+    GameObject obj;
+    Vector3 angle;
+    public float anglestop = 30f;
     //Vector3 angle;//カメラの縦アングル
     //public float anglestop=30f;//アングル制御
     // Start is called before the first frame update
@@ -31,6 +36,7 @@ public class player : MonoBehaviour
         Fly();//上昇、下降
         Attack();//攻撃
         Zoom();//ズーム
+        //Dead();
     }
     //回転、カメラアングル
     void Rotate()
@@ -73,14 +79,14 @@ public class player : MonoBehaviour
         //ゲームオブジェクトのｚ軸とx軸に入力された値をかけると進む方向が出せる
         movement = ((transform.forward * moveDir.z) + (transform.right * moveDir.x)).normalized;
         //ダッシュするかどうかの判定
-        if(Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             dush = true;//シフトと同時押しで速度アップ
         }
-        if(dush)
+        if (dush)
         {
             //現在位置に進む方向＊移動スピード*2＊フレーム間秒数を足す
-            transform.position += movement * activeMoveSpeed*3 * Time.deltaTime;
+            transform.position += movement * activeMoveSpeed * 3 * Time.deltaTime;
         }
         else
         {
@@ -94,7 +100,7 @@ public class player : MonoBehaviour
     void Fly()
     {
         //スペースキーを押したら上昇する
-        if(Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             transform.position += new Vector3(0, upFly, 0);
         }
@@ -108,11 +114,19 @@ public class player : MonoBehaviour
     //攻撃
     void Attack()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
+            
+            
+                obj = (GameObject)Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
+                obj.transform.parent = camera.transform;
+                
+            
             //攻撃処理をここに書く。
-            Instantiate(satoruEfect, transform.forward, Quaternion.identity);
+            //Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
+            //gameObject.transform.parent = satoruEfect.gameObject.transform;
         }
+
     }
     //ズーム
     void Zoom()
