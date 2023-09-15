@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VerticalCamera : MonoBehaviour
+public class Neck : MonoBehaviour
 {
     float anglespeed = 1;
-    float angle;
+    Vector3 angle;
     public float anglestop = 30f;
-    public GameObject player;
-    Vector3 PlayerPos;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,10 +20,15 @@ public class VerticalCamera : MonoBehaviour
     }
     void Verticalangle()
     {
-        angle = Input.GetAxis("Mouse Y");
-        //transform.localEulerAngles= -angle;
-        PlayerPos = player.transform.position;
-        transform.RotateAround(PlayerPos, Vector3.left, angle);
-
+        angle += new Vector3(0, 0, Input.GetAxisRaw("Mouse Y"));
+        transform.localEulerAngles = angle;
+        if (angle.x >= anglestop)
+        {
+            angle.x = anglestop;
+        }
+        if (angle.x <= -anglestop)
+        {
+            angle.x = -anglestop;
+        }
     }
 }
