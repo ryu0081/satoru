@@ -47,9 +47,9 @@ public class player : MonoBehaviour
 
         //横回転を反映(transform.eulerAnglesはオイラー角としての角度が返される)
         transform.rotation = Quaternion.Euler
-            (transform.eulerAngles.x,
+            (0 ,
             transform.eulerAngles.y + mouseInput.x, //マウスのx軸の入力を足す
-            transform.eulerAngles.z);
+            0);
 
         //angle += new Vector3(Input.GetAxisRaw("Mouse Y"), 0, 0);
         //transform.localEulerAngles = -angle;
