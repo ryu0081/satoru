@@ -9,6 +9,8 @@ public class VerticalCamera : MonoBehaviour
     public float anglestop = 30f;
     public GameObject player;
     Vector3 PlayerPos;
+    //Quaternion rotate;
+    Vector3 rotate;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +24,23 @@ public class VerticalCamera : MonoBehaviour
     }
     void Verticalangle()
     {
+        rotate = transform.localEulerAngles;
         angle = Input.GetAxis("Mouse Y");
         //transform.localEulerAngles= -angle;
         PlayerPos = player.transform.position;
         transform.RotateAround(PlayerPos, Vector3.left, angle);
-
+        transform.LookAt(PlayerPos);
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log(rotate.x);
+        }
+        if (rotate.x >= anglestop)
+        {
+            rotate.x = anglestop;
+        }
+        if (rotate.x <= -anglestop)
+        {
+            rotate.x = -anglestop;
+        }
     }
 }

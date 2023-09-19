@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player : MonoBehaviour
+public class camera : MonoBehaviour
 {
     private Vector2 mouseInput;//ユーザーのマウス入力を格納
     public float mouseSensitivity = 1f;//視点移動の速度
@@ -12,20 +12,15 @@ public class player : MonoBehaviour
     private float activeMoveSpeed = 4;//実際の移動速度
     bool dush = false;//ダッシュ判定
     float upFly = 0.01f;//上昇するスピード
-    public GameObject camera;
+    //public GameObject camera;
     Camera maincamera;
-    public GameObject satoruEfect;//ビームのエフェクト
-    public GameObject satorusppon;//生成する場所
-    bool attack = false;
     GameObject obj;
     Vector3 angle;
     public float anglestop = 30f;
-    //Vector3 angle;//カメラの縦アングル
-    //public float anglestop=30f;//アングル制御
-    // Start is called before the first frame update
+    
     void Start()
     {
-        maincamera = camera.GetComponent<Camera>();// Cameraの値を取得
+       
     }
 
     // Update is called once per frame
@@ -34,9 +29,7 @@ public class player : MonoBehaviour
         PlayerMove();//移動処理
         Rotate();//回転、カメラアングル
         Fly();//上昇、下降
-        Attack();//攻撃
-        Zoom();//ズーム
-        //Dead();
+        
     }
     //回転、カメラアングル
     void Rotate()
@@ -47,9 +40,9 @@ public class player : MonoBehaviour
 
         //横回転を反映(transform.eulerAnglesはオイラー角としての角度が返される)
         transform.rotation = Quaternion.Euler
-            (0 ,
+            (transform.eulerAngles.x+mouseInput.y,
             transform.eulerAngles.y + mouseInput.x, //マウスのx軸の入力を足す
-            0);
+            transform.eulerAngles.z);
 
         //angle += new Vector3(Input.GetAxisRaw("Mouse Y"), 0, 0);
         //transform.localEulerAngles = -angle;
@@ -111,35 +104,5 @@ public class player : MonoBehaviour
         }
 
     }
-    //攻撃
-    void Attack()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            
-            
-                obj = (GameObject)Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
-                obj.transform.parent = camera.transform;
-                
-            
-            //攻撃処理をここに書く。
-            //Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
-            //gameObject.transform.parent = satoruEfect.gameObject.transform;
-        }
-
-    }
-    //ズーム
-    void Zoom()
-    {
-        maincamera.fieldOfView = 60.0f;
-        //ボタンを押してる間
-        if (Input.GetMouseButton(1))
-        {
-            maincamera.fieldOfView = 20.0f;
-            //if(maincamera.fieldOfView<=20f)
-            //{
-            //    maincamera.fieldOfView = 20f;
-            //}
-        }
-    }
+   
 }
