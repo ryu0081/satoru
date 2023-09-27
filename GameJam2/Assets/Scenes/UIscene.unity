@@ -454,6 +454,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1510278187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1270195162185653021, guid: 4480e9ebc906682458456292c8d0f582,
+    type: 3}
+  m_PrefabInstance: {fileID: 1270195162280296593}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1666617150
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 249249712}
   closeButton: {fileID: 1293942612}
+  Gage: {fileID: 1510278187}
 --- !u!1001 &1270195162280296593
 PrefabInstance:
   m_ObjectHideFlags: 0
