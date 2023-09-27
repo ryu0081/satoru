@@ -22,13 +22,13 @@ public class Neck : MonoBehaviour
     {
         angle += new Vector3(0, 0, Input.GetAxisRaw("Mouse Y"));
         transform.localEulerAngles = angle;
-        if (angle.x >= anglestop)
+        if (angle.z >= anglestop)
         {
-            angle.x = anglestop;
+            angle.z = anglestop;
         }
-        if (angle.x <= -anglestop)
+        if (angle.z <= -anglestop)
         {
-            angle.x = -anglestop;
+            angle.z = -anglestop;
         }
     }
 }

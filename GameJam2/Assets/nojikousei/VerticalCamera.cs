@@ -24,23 +24,27 @@ public class VerticalCamera : MonoBehaviour
     }
     void Verticalangle()
     {
-        rotate = transform.localEulerAngles;
         angle = Input.GetAxis("Mouse Y");
         //transform.localEulerAngles= -angle;
         PlayerPos = player.transform.position;
+
+        rotate = transform.localEulerAngles;
+        // そのままの角度だと使いにくいため、-180～180に変換する
+        rotate.x = Mathf.Repeat(rotate.x + 180, 360) - 180;
+
+        Debug.Log("rotate.x :" + rotate.x);
+
+        if (rotate.x >  anglestop)
+        {
+            angle = angle < 0f ? 0f : angle;
+        }
+        if(rotate.x < -anglestop)
+        {
+            angle = angle > 0f ? 0f : angle;
+
+        }
         transform.RotateAround(PlayerPos, Vector3.left, angle);
         transform.LookAt(PlayerPos);
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Debug.Log(rotate.x);
-        }
-        if (rotate.x >= anglestop)
-        {
-            rotate.x = anglestop;
-        }
-        if (rotate.x <= -anglestop)
-        {
-            rotate.x = -anglestop;
-        }
+        //ぐるぐるするとちょっとバグる
     }
 }
