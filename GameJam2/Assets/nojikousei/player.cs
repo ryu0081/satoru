@@ -117,10 +117,8 @@ public class player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            
-            
-                obj = (GameObject)Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
-                obj.transform.parent = camera.transform;
+            obj = (GameObject)Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
+            obj.transform.parent = camera.transform;
                 
             
             //UŒ‚ˆ—‚ğ‚±‚±‚É‘‚­B
