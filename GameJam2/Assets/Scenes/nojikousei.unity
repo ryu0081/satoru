@@ -2549,7 +2549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 1
   camera: {fileID: 1534217589}
-  satoruEfect: {fileID: 5448953145663348350, guid: 8318199688ca7274f953735fec96aa21,
+  satoruEfect: {fileID: 531034932317582834, guid: b855fb2f73965ef4484ca457d4f4a43d,
     type: 3}
   satorusppon: {fileID: 581034788}
   anglestop: 30
