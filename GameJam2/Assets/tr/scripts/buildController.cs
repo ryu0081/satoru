@@ -6,7 +6,7 @@ public class buildController : MonoBehaviour
 {
     float speed = -0.2f;
     public bool isFall = true;
-    bool isBeam = false;
+    public bool isBeam = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,5 +25,19 @@ public class buildController : MonoBehaviour
         transform.position += new Vector3(0.0f, speed, 0.0f);
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.gameObject.tag == "Beam")
+        {
+            isBeam = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.collider.gameObject.tag == "Beam")
+        {
+            isBeam = false;
+        }
+    }
 }
