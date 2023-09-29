@@ -127,13 +127,13 @@ NavMeshSettings:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5515383853582801461, guid: f2486c49d1a2a194aab4950136ddb9db,
     type: 3}
-  m_PrefabInstance: {fileID: 5515383853811852677}
+  m_PrefabInstance: {fileID: 6349962780536600780}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &249249713 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5515383853582801460, guid: f2486c49d1a2a194aab4950136ddb9db,
     type: 3}
-  m_PrefabInstance: {fileID: 5515383853811852677}
+  m_PrefabInstance: {fileID: 6349962780536600780}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &509467533 stripped
 RectTransform:
@@ -446,7 +446,7 @@ MonoBehaviour:
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5515383854702959313, guid: f2486c49d1a2a194aab4950136ddb9db,
     type: 3}
-  m_PrefabInstance: {fileID: 5515383853811852677}
+  m_PrefabInstance: {fileID: 6349962780536600780}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -454,12 +454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1510278187 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1270195162185653021, guid: 4480e9ebc906682458456292c8d0f582,
-    type: 3}
-  m_PrefabInstance: {fileID: 1270195162280296593}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1666617150
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +571,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 249249712}
   closeButton: {fileID: 1293942612}
-  Gage: {fileID: 1510278187}
 --- !u!1001 &1270195162280296593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -702,7 +695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4480e9ebc906682458456292c8d0f582, type: 3}
---- !u!1001 &5515383853811852677
+--- !u!1001 &6349962780536600780
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -824,15 +817,5 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1666617155}
-    - target: {fileID: 5617731407960763159, guid: f2486c49d1a2a194aab4950136ddb9db,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5617731408933960689, guid: f2486c49d1a2a194aab4950136ddb9db,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2486c49d1a2a194aab4950136ddb9db, type: 3}
