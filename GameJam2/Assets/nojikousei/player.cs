@@ -11,7 +11,7 @@ public class player : MonoBehaviour
     private Vector3 movement;//進む方向を格納する変数
     private float activeMoveSpeed = 4;//実際の移動速度
     bool dush = false;//ダッシュ判定
-    float upFly = 0.01f;//上昇するスピード
+    float upFly = 0.1f;//上昇するスピード
     public GameObject camera;
     Camera maincamera;
     public GameObject[] satoruEfect;//ビームのエフェクト
@@ -22,6 +22,14 @@ public class player : MonoBehaviour
     public float anglestop = 30f;
     int efectnunber = 0;
     public GameObject playerobj;
+    float cooltime;
+    float cooltime1;
+    float cooltime2;
+    bool satobe = true;
+    bool jyakube = true;
+    bool homingbe = true;
+    Vector3 muki;
+    public GameObject kubi;
     //Vector3 angle;//カメラの縦アングル
     //public float anglestop=30f;//アングル制御
     // Start is called before the first frame update
@@ -34,7 +42,7 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Cursor.visible = true;
+        Cursor.visible = false;
         PlayerMove();//移動処理
         Rotate();//回転、カメラアングル
         Fly();//上昇、下降
@@ -75,6 +83,7 @@ public class player : MonoBehaviour
     //移動処理
     public void PlayerMove()
     {
+        muki = transform.forward;
         dush = false;
         //変数の水平と垂直の入力を格納する（wasdや矢印の入力）
         moveDir = new Vector3(Input.GetAxisRaw("Horizontal"),
@@ -118,7 +127,31 @@ public class player : MonoBehaviour
     //攻撃
     void Attack()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if(!satobe)
+        {
+            cooltime += Time.deltaTime;
+            if(cooltime>12f)
+            {
+                satobe = true;
+            }
+        }
+        if (!jyakube)
+        {
+            cooltime += Time.deltaTime;
+            if (cooltime > 4f)
+            {
+                jyakube = true;
+            }
+        }
+        if (!homingbe)
+        {
+            cooltime += Time.deltaTime;
+            if (cooltime > 3f)
+            {
+                homingbe = true;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             efectnunber = 0;
         }
@@ -130,21 +163,38 @@ public class player : MonoBehaviour
         {
             efectnunber = 2;
         }
+        
         if (Input.GetMouseButtonDown(0))
         {
             switch (efectnunber)
             {
                 case 0:
-                    obj = (GameObject)Instantiate(satoruEfect[0], satorusppon.transform.position, Quaternion.identity);
-                    obj.transform.parent = playerobj.transform;
+                    if(satobe)
+                    {
+                        
+                        obj = (GameObject)Instantiate(satoruEfect[0], satorusppon.transform.position, Quaternion.identity);
+                        obj.transform.parent = camera.transform;
+                        satobe = false;
+                    }
                     break;
                 case 1:
-                    obj = (GameObject)Instantiate(satoruEfect[1], satorusppon.transform.position, Quaternion.identity);
-                    obj.transform.parent = camera.transform;
+                    if (jyakube)
+                    {
+
+                        obj = (GameObject)Instantiate(satoruEfect[1], satorusppon.transform.position, transform.rotation);
+                        obj.transform.parent = camera.transform;
+                        satobe = false;
+                    }
                     break;
                 case 2:
-                    obj = (GameObject)Instantiate(satoruEfect[2], satorusppon.transform.position, Quaternion.identity);
-                    obj.transform.parent = camera.transform;
+                    if (homingbe)
+                    {
+
+                        obj = (GameObject)Instantiate(satoruEfect[2], satorusppon.transform.position, Quaternion.identity);
+                        obj.transform.parent = camera.transform;
+                        satobe = false;
+                    }
+                   
                     break;
             }
             
