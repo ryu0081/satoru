@@ -7,6 +7,8 @@ public class buildController : MonoBehaviour
     float speed = -0.2f;
     public bool isFall = true;
     public bool isBeam = false;
+    //倒したときのエフェクト
+    public GameObject breakEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,17 @@ public class buildController : MonoBehaviour
         if(collision.collider.gameObject.tag == "Beam")
         {
             isBeam = true;
+            //エフェクトを発生させる
+            GenerateEffect();
         }
+    }
+    //エフェクトを生成する
+    void GenerateEffect()
+    {
+        //エフェクトを生成する
+        GameObject effect = Instantiate(breakEffect) as GameObject;
+        //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
+        effect.transform.position = gameObject.transform.position;
     }
 
     private void OnCollisionExit(Collision collision)
