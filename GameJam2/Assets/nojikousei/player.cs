@@ -20,6 +20,7 @@ public class player : MonoBehaviour
     GameObject obj;
     Vector3 angle;
     public float anglestop = 30f;
+    int efectnunber = 0;
     //Vector3 angle;//カメラの縦アングル
     //public float anglestop=30f;//アングル制御
     // Start is called before the first frame update
@@ -115,10 +116,36 @@ public class player : MonoBehaviour
     //攻撃
     void Attack()
     {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            efectnunber = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            efectnunber = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            efectnunber = 2;
+        }
         if (Input.GetMouseButtonDown(0))
         {
-            obj = (GameObject)Instantiate(satoruEfect[0], satorusppon.transform.position, Quaternion.identity);
-            obj.transform.parent = camera.transform;
+            switch (efectnunber)
+            {
+                case 0:
+                    obj = (GameObject)Instantiate(satoruEfect[0], satorusppon.transform.position, Quaternion.identity);
+                    obj.transform.parent = camera.transform;
+                    break;
+                case 1:
+                    obj = (GameObject)Instantiate(satoruEfect[1], satorusppon.transform.position, Quaternion.identity);
+                    obj.transform.parent = camera.transform;
+                    break;
+                case 2:
+                    obj = (GameObject)Instantiate(satoruEfect[2], satorusppon.transform.position, Quaternion.identity);
+                    obj.transform.parent = camera.transform;
+                    break;
+            }
+            
                 
             
             //攻撃処理をここに書く。
@@ -134,7 +161,7 @@ public class player : MonoBehaviour
         //ボタンを押してる間
         if (Input.GetMouseButton(1))
         {
-            maincamera.fieldOfView = 20.0f;
+            maincamera.fieldOfView = 10.0f;
             //if(maincamera.fieldOfView<=20f)
             //{
             //    maincamera.fieldOfView = 20f;
