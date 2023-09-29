@@ -14,7 +14,7 @@ public class player : MonoBehaviour
     float upFly = 0.01f;//上昇するスピード
     public GameObject camera;
     Camera maincamera;
-    public GameObject satoruEfect;//ビームのエフェクト
+    public GameObject[] satoruEfect;//ビームのエフェクト
     public GameObject satorusppon;//生成する場所
     bool attack = false;
     GameObject obj;
@@ -117,7 +117,7 @@ public class player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            obj = (GameObject)Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
+            obj = (GameObject)Instantiate(satoruEfect[0], satorusppon.transform.position, Quaternion.identity);
             obj.transform.parent = camera.transform;
                 
             
