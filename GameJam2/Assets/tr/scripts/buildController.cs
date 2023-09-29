@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class buildController : MonoBehaviour
 {
-    float speed = -0.2f;
+    float speed = -2.0f;
 
     public bool isBeam = false;
     //倒したときのエフェクト
@@ -27,15 +27,6 @@ public class buildController : MonoBehaviour
         transform.position += new Vector3(0.0f, speed, 0.0f);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.collider.gameObject.tag == "Beam")
-        {
-            isBeam = true;
-            //エフェクトを発生させる
-            GenerateEffect();
-        }
-    }
     //エフェクトを生成する
     void GenerateEffect()
     {
@@ -45,11 +36,15 @@ public class buildController : MonoBehaviour
         effect.transform.position = gameObject.transform.position;
     }
 
-    private void OnCollisionExit(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.collider.gameObject.tag == "Beam")
+        if (other.gameObject.tag == "Beam")
         {
-            isBeam = false;
+            isBeam = true;
+            //エフェクトを発生させる
+            GenerateEffect();
         }
     }
+
 }

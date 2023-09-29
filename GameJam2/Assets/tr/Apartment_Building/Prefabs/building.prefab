@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c389aecfed8ee3b44b618b4227ad9999,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c389aecfed8ee3b44b618b4227ad9999,
         type: 3}
@@ -30,17 +30,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c389aecfed8ee3b44b618b4227ad9999,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.4073639
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c389aecfed8ee3b44b618b4227ad9999,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c389aecfed8ee3b44b618b4227ad9999,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 16.642365
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c389aecfed8ee3b44b618b4227ad9999,
         type: 3}
@@ -50,17 +50,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c389aecfed8ee3b44b618b4227ad9999,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c389aecfed8ee3b44b618b4227ad9999,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c389aecfed8ee3b44b618b4227ad9999,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c389aecfed8ee3b44b618b4227ad9999,
         type: 3}
@@ -146,4 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010008360c2279846acf243dccb2a56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFall: 0
+  isBeam: 0
+  breakEffect: {fileID: 6062093789608422919, guid: 3b5a220ebb8f8e041ad8bfb7a744c0f8,
+    type: 3}
