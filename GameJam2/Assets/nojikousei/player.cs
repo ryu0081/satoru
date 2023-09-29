@@ -28,12 +28,13 @@ public class player : MonoBehaviour
     void Start()
     {
         maincamera = camera.GetComponent<Camera>();// Cameraの値を取得
-        Cursor.lockState = CursorLockMode.Locked;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        Cursor.visible = true;
         PlayerMove();//移動処理
         Rotate();//回転、カメラアングル
         Fly();//上昇、下降
