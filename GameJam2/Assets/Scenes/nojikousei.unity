@@ -914,10 +914,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4061111601170694518, guid: 6954632fce251524f806f4b923213894,
+        type: 3}
+      propertyPath: anglestop
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4061111601170694518, guid: 6954632fce251524f806f4b923213894,
+        type: 3}
+      propertyPath: satoruEfect.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4061111601170694518, guid: 6954632fce251524f806f4b923213894,
+        type: 3}
+      propertyPath: satoruEfect.Array.data[1]
+      value: 
+      objectReference: {fileID: 531034932317582834, guid: b855fb2f73965ef4484ca457d4f4a43d,
+        type: 3}
+    - target: {fileID: 4061111601170694518, guid: 6954632fce251524f806f4b923213894,
+        type: 3}
+      propertyPath: satoruEfect.Array.data[2]
+      value: 
+      objectReference: {fileID: 333754469320472956, guid: 02f687625e2c8394db89c8dc77ef6cf4,
+        type: 3}
     - target: {fileID: 4968820455767292105, guid: 6954632fce251524f806f4b923213894,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7524284901170347043, guid: 6954632fce251524f806f4b923213894,
+        type: 3}
+      propertyPath: anglestop
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8263984610550139610, guid: 6954632fce251524f806f4b923213894,
         type: 3}
@@ -974,5 +1001,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7524284901170347044, guid: 6954632fce251524f806f4b923213894, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6954632fce251524f806f4b923213894, type: 3}
