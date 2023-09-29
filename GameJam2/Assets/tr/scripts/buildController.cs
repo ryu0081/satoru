@@ -10,10 +10,12 @@ public class buildController : MonoBehaviour
     //倒したときのエフェクト
     public GameObject breakEffect;
 
+    Vector3 pos = new Vector3(0.0f, 20.0f, 0.0f);
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class buildController : MonoBehaviour
         //エフェクトを生成する
         GameObject effect = Instantiate(breakEffect) as GameObject;
         //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
-        effect.transform.position = gameObject.transform.position;
+        effect.transform.position = pos += gameObject.transform.position;
     }
 
 
