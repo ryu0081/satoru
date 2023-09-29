@@ -5,7 +5,7 @@ using UnityEngine;
 public class buildController : MonoBehaviour
 {
     float speed = -0.2f;
-    public bool isFall = true;
+
     public bool isBeam = false;
 
     // Start is called before the first frame update
@@ -17,7 +17,7 @@ public class buildController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isFall) fall();
+        if (isBeam) fall();
     }
 
     void fall()
