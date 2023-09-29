@@ -21,6 +21,7 @@ public class player : MonoBehaviour
     Vector3 angle;
     public float anglestop = 30f;
     int efectnunber = 0;
+    public GameObject playerobj;
     //Vector3 angle;//カメラの縦アングル
     //public float anglestop=30f;//アングル制御
     // Start is called before the first frame update
@@ -134,7 +135,7 @@ public class player : MonoBehaviour
             {
                 case 0:
                     obj = (GameObject)Instantiate(satoruEfect[0], satorusppon.transform.position, Quaternion.identity);
-                    obj.transform.parent = camera.transform;
+                    obj.transform.parent = playerobj.transform;
                     break;
                 case 1:
                     obj = (GameObject)Instantiate(satoruEfect[1], satorusppon.transform.position, Quaternion.identity);
