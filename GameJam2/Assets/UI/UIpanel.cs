@@ -22,6 +22,8 @@ public class UIpanel : MonoBehaviour
         {
             Time.timeScale = 0;
 
+            Cursor.visible = true;
+
             panel.SetActive(true); // ESCキーが押されたらパネルを表示
 
 
