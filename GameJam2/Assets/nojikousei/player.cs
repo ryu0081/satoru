@@ -172,7 +172,7 @@ public class player : MonoBehaviour
                     if(satobe)
                     {
                         
-                        obj = (GameObject)Instantiate(satoruEfect[0], satorusppon.transform.position, Quaternion.identity);
+                        obj = (GameObject)Instantiate(satoruEfect[0], satorusppon.transform.position, transform.rotation);
                         obj.transform.parent = camera.transform;
                         satobe = false;
                     }
@@ -190,7 +190,7 @@ public class player : MonoBehaviour
                     if (homingbe)
                     {
 
-                        obj = (GameObject)Instantiate(satoruEfect[2], satorusppon.transform.position, Quaternion.identity);
+                        obj = (GameObject)Instantiate(satoruEfect[2], satorusppon.transform.position, transform.rotation);
                         obj.transform.parent = camera.transform;
                         satobe = false;
                     }
