@@ -9,9 +9,9 @@ public class player : MonoBehaviour
     private float verticalMouseInput;//y軸の回転を格納　回転を制限したいから
     private Vector3 moveDir;//プレイヤーの入力を格納（移動）
     private Vector3 movement;//進む方向を格納する変数
-    private float activeMoveSpeed = 4;//実際の移動速度
+    private float activeMoveSpeed = 10;//実際の移動速度
     bool dush = false;//ダッシュ判定
-    float upFly = 0.1f;//上昇するスピード
+    float upFly = 1.75f;//上昇するスピード
     public GameObject camera;
     Camera maincamera;
     public GameObject[] satoruEfect;//ビームのエフェクト
@@ -42,7 +42,6 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Cursor.visible = false;
         PlayerMove();//移動処理
         Rotate();//回転、カメラアングル
         Fly();//上昇、下降
@@ -219,5 +218,11 @@ public class player : MonoBehaviour
             //    maincamera.fieldOfView = 20f;
             //}
         }
+    }
+
+    private void FixedUpdate()
+    {
+        Cursor.visible = false;
+
     }
 }

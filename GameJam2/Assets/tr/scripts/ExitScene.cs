@@ -15,7 +15,6 @@ public class ExitScene : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 }
