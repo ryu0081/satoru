@@ -907,6 +907,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &4257624313680711146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7524284901170347045, guid: 6954632fce251524f806f4b923213894,
+    type: 3}
+  m_PrefabInstance: {fileID: 6016175242153996751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6016175242153996751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -916,9 +922,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4061111601170694518, guid: 6954632fce251524f806f4b923213894,
         type: 3}
+      propertyPath: kubi
+      value: 
+      objectReference: {fileID: 4257624313680711146}
+    - target: {fileID: 4061111601170694518, guid: 6954632fce251524f806f4b923213894,
+        type: 3}
       propertyPath: anglestop
-      value: 90
+      value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 4061111601170694518, guid: 6954632fce251524f806f4b923213894,
+        type: 3}
+      propertyPath: playerobj
+      value: 
+      objectReference: {fileID: 7720938866863632568}
     - target: {fileID: 4061111601170694518, guid: 6954632fce251524f806f4b923213894,
         type: 3}
       propertyPath: satoruEfect.Array.size
@@ -1004,3 +1020,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7524284901170347044, guid: 6954632fce251524f806f4b923213894, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6954632fce251524f806f4b923213894, type: 3}
+--- !u!1 &7720938866863632568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4061111601170694519, guid: 6954632fce251524f806f4b923213894,
+    type: 3}
+  m_PrefabInstance: {fileID: 6016175242153996751}
+  m_PrefabAsset: {fileID: 0}
