@@ -1027,7 +1027,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 13
+      cycleCount: 5
       repeatInterval: 0.05
       probability: 1
   SizeModule:
@@ -5970,7 +5970,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 13
+      cycleCount: 5
       repeatInterval: 0.05
       probability: 1
   SizeModule:
@@ -10912,7 +10912,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 13
+      cycleCount: 5
       repeatInterval: 0.05
       probability: 1
   SizeModule:
@@ -15857,7 +15857,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 13
+      cycleCount: 5
       repeatInterval: 0.05
       probability: 1
   SizeModule:
