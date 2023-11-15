@@ -135,6 +135,7 @@ public class player : MonoBehaviour
             }
         }
         if (!jyakube)
+
         {
             cooltime += Time.deltaTime;
             if (cooltime > 4f)
