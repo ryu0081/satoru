@@ -6150,7 +6150,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -6612,7 +6612,7 @@ PrefabInstance:
     - target: {fileID: 531034932317582834, guid: b855fb2f73965ef4484ca457d4f4a43d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 531034932317582845, guid: b855fb2f73965ef4484ca457d4f4a43d,
         type: 3}
@@ -11561,7 +11561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &3032240322783014396
 Light:
   m_ObjectHideFlags: 0
