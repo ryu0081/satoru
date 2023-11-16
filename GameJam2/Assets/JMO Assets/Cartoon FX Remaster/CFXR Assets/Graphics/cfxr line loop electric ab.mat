@@ -11,11 +11,13 @@ Material:
   m_Shader: {fileID: 4800000, guid: e198026df304af84a85675be636192ea, type: 3}
   m_ValidKeywords:
   - _ALPHABLEND_ON
+  - _CFXR_DITHERED_SHADOWS_ON
+  - _CFXR_HDR_BOOST
+  - _CFXR_LIGHTING_DIRECT
+  - _CFXR_LIGHTING_WPOS_OFFSET
   - _CFXR_SINGLE_CHANNEL
   m_InvalidKeywords:
-  - _
   - _CFXR_DISSOLVE_VCOLOR
-  - _CFXR_DITHERED_SHADOWS_OFF
   - _CFXR_OVERLAYBLEND_RGBA
   - _CFXR_OVERLAYTEX_OFF
   - _OVERLAYTEX_OFF
@@ -81,7 +83,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SecondColorTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c829f3f833484ac45b5b9150cb06631c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -89,7 +91,7 @@ Material:
     - _BacklightTransmittance: 1
     - _BlendingType: 0
     - _BumpScale: 1
-    - _CFXR_DITHERED_SHADOWS: 0
+    - _CFXR_DITHERED_SHADOWS: 1
     - _CFXR_OVERLAYBLEND: 0
     - _CFXR_OVERLAYTEX: 0
     - _Cutoff: 0.5
@@ -107,7 +109,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HdrBoost: 0
+    - _HdrBoost: 1
     - _HdrMultiply: 1.5
     - _IndirectLightingMix: 0.5
     - _InvertDissolveTex: 0
@@ -118,8 +120,8 @@ Material:
     - _OVERLAYTEX: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _SecondColorSmooth: 0.2
-    - _ShadowStrength: 1
+    - _SecondColorSmooth: 0.5
+    - _ShadowStrength: 0.7
     - _SingleChannel: 1
     - _SmoothnessTextureChannel: 0
     - _SoftParticlesFadeDistanceFar: 1
@@ -137,14 +139,14 @@ Material:
     - _UseEmission: 0
     - _UseFB: 0
     - _UseFontColor: 0
-    - _UseLighting: 0
-    - _UseLightingWorldPosOffset: 0
+    - _UseLighting: 1
+    - _UseLightingWorldPosOffset: 1
     - _UseNormalMap: 0
     - _UseSP: 0
     - _UseSecondColor: 0
     - _UseUV2Distortion: 0
     - _UseUVDistortion: 0
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveScroll: {r: 0, g: 0, b: 0, a: 0}
