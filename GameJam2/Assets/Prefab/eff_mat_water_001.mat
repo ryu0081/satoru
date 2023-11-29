@@ -19,8 +19,7 @@ Material:
   m_CustomRenderQueue: 3000
   stringTagMap:
     RenderType: Transparent
-  disabledShaderPasses:
-  - DepthOnly
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -100,7 +99,7 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -110,18 +109,18 @@ Material:
     - _Surface: 1
     - _WorkflowMode: 1
     - _ZTest: 4
-    - _ZWrite: 0
-    - _ZWriteControl: 0
-    - _voronoiPower: 7.5
-    - _voronoiSize: 5
-    - _voronoiSpeed: 1
+    - _ZWrite: 1
+    - _ZWriteControl: 1
+    - _voronoiPower: 25
+    - _voronoiSize: 7
+    - _voronoiSpeed: 20
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _ScrollSpeed: {r: 0.3, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _color: {r: 3.5574772, g: 5.709168, b: 7.061659, a: 0}
+    - _color: {r: 4.324618, g: 7.849478, b: 7.689257, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6463431572504032068
 MonoBehaviour:
