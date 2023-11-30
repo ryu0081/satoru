@@ -44,9 +44,9 @@ public class player : MonoBehaviour
     {
         PlayerMove();//移動処理
         Rotate();//回転、カメラアングル
-        Fly();//上昇、下降
-        Attack();//攻撃
-        Zoom();//ズーム
+        //Fly();//上昇、下降
+        //Attack();//攻撃
+        //Zoom();//ズーム
         //Dead();
     }
     //回転、カメラアングル
@@ -91,20 +91,20 @@ public class player : MonoBehaviour
         //ゲームオブジェクトのｚ軸とx軸に入力された値をかけると進む方向が出せる
         movement = ((transform.forward * moveDir.z) + (transform.right * moveDir.x)).normalized;
         //ダッシュするかどうかの判定
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            dush = true;//シフトと同時押しで速度アップ
-        }
-        if (dush)
-        {
-            //現在位置に進む方向＊移動スピード*2＊フレーム間秒数を足す
-            transform.position += movement * activeMoveSpeed * 3 * Time.deltaTime;
-        }
-        else
-        {
-            //現在位置に進む方向＊移動スピード＊フレーム間秒数を足す
-            transform.position += movement * activeMoveSpeed * Time.deltaTime;
-        }
+        //if (Input.GetKey(KeyCode.LeftShift))
+        //{
+        //    dush = true;//シフトと同時押しで速度アップ
+        //}
+        //if (dush)
+        //{
+        //    //現在位置に進む方向＊移動スピード*2＊フレーム間秒数を足す
+        //    transform.position += movement * activeMoveSpeed * 3 * Time.deltaTime;
+        //}
+        //else
+        //{
+        //    //現在位置に進む方向＊移動スピード＊フレーム間秒数を足す
+        //    transform.position += movement * activeMoveSpeed * Time.deltaTime;
+        //}
         //現在位置に進む方向＊移動スピード＊フレーム間秒数を足す
         transform.position += movement * activeMoveSpeed * Time.deltaTime;
     }
