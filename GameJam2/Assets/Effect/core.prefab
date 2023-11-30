@@ -14838,6 +14838,7 @@ GameObject:
   - component: {fileID: 333754469320472953}
   - component: {fileID: 333754469320472954}
   - component: {fileID: 333754469320472955}
+  - component: {fileID: 4184576621448026333}
   m_Layer: 0
   m_Name: core
   m_TagString: Beam
@@ -19773,6 +19774,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4184576621448026333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333754469320472956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8a1ea9200e2fc4696e7e3e81a39dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &839559973957720501
 GameObject:
   m_ObjectHideFlags: 0

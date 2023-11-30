@@ -8,6 +8,8 @@ TagManager:
   - FxTemporaire
   - build
   - Beam
+  - CinemachineTarget
+  - Wall
   layers:
   - Default
   - TransparentFX
