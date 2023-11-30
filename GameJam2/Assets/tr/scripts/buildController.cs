@@ -21,7 +21,7 @@ public class buildController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isBeam) fall();
+
     }
 
     void fall()
@@ -46,6 +46,15 @@ public class buildController : MonoBehaviour
             isBeam = true;
             //エフェクトを発生させる
             GenerateEffect();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Beam")
+        {
+            isBeam = false;
+            //エフェクトを発生させる
         }
     }
 
