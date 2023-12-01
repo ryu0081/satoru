@@ -6,9 +6,13 @@ public class buildController : MonoBehaviour
 {
     float speed = -2.0f;
 
-    public bool isBeam = false;
+    public bool isDamage = false;
+    public bool isEnemy = false;
+    public bool isPlayer = false;
+
     //倒したときのエフェクト
     public GameObject breakEffect;
+    GameObject effect;
 
     Vector3 pos = new Vector3(0.0f, 20.0f, 0.0f);
 
@@ -33,9 +37,9 @@ public class buildController : MonoBehaviour
     void GenerateEffect()
     {
         //エフェクトを生成する
-        GameObject effect = Instantiate(breakEffect) as GameObject;
+        effect = Instantiate(breakEffect) as GameObject;
         //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
-        effect.transform.position = pos += gameObject.transform.position;
+        effect.transform.position = pos + gameObject.transform.position;
     }
 
 
@@ -43,18 +47,23 @@ public class buildController : MonoBehaviour
     {
         if (other.gameObject.tag == "Beam")
         {
-            isBeam = true;
+            isPlayer = true;
+            isDamage = true;
             //エフェクトを発生させる
             GenerateEffect();
+        }else if(other.gameObject.tag == "Enemy")
+        {
+            isEnemy = true;
+            isDamage = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Beam")
+        if (other.gameObject.tag == "Beam" || other.gameObject.tag == "Enemy")
         {
-            isBeam = false;
-            //エフェクトを発生させる
+            isDamage = false;
+            Destroy(effect);
         }
     }
 

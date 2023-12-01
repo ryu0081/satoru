@@ -7,9 +7,15 @@ public class HPManger : MonoBehaviour
 {
     public buildController[] bc;
 
-    bool isBeam = false;
+    bool[] isDamage = new bool[4];
 
-    float damage = 0.01f;
+    bool[] isPlayer = new bool[4];
+    bool[] isEnemy = new bool[4];
+
+    float damage = 0.001f;
+
+    public int pScore = 0;           //プレイヤー用のスコア
+    public int eScore = 0;           //Enemy用のスコア
 
     // Start is called before the first frame update
     void Start()
@@ -19,19 +25,40 @@ public class HPManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isBeam = bc[0].isBeam;
-        isBeam = bc[1].isBeam;
-        isBeam = bc[2].isBeam;
-        isBeam = bc[3].isBeam;
-        Debug.Log(isBeam);
+        isDamage[0] = bc[0].isDamage;
+        isDamage[1] = bc[1].isDamage;
+        isDamage[2] = bc[2].isDamage;
+        isDamage[3] = bc[3].isDamage;
+
+        isPlayer[0] = bc[0].isPlayer;
+        isPlayer[1] = bc[1].isPlayer;
+        isPlayer[2] = bc[2].isPlayer;
+        isPlayer[3] = bc[3].isPlayer;
+
+        isEnemy[0] = bc[0].isEnemy;
+        isEnemy[1] = bc[1].isEnemy;
+        isEnemy[2] = bc[2].isEnemy;
+        isEnemy[3] = bc[3].isEnemy;
+
         HP();
     }
 
     void HP()
     {
-        if (isBeam)
+        if (isDamage[0] | isDamage[1] | isDamage[2] || isDamage[3])             //ダメージが当たっている時
         {
-            GetComponent<Image>().fillAmount -= damage;
+            if (isPlayer[0] || isPlayer[1] || isPlayer[2] || isPlayer[3])       //プレイヤーが建物を破壊しているとき
+            {
+                GetComponent<Image>().fillAmount -= damage;
+                pScore += (int)damage * 100;
+            }
+
+            if (isEnemy[0] || isEnemy[1] || isEnemy[2] || isEnemy[3])           //Enemyが建物を破壊しているとき
+            {
+                GetComponent<Image>().fillAmount -= damage;
+                eScore += (int)damage * 100;
+
+            }
         }
     }
 }

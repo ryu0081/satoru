@@ -10,6 +10,7 @@ TagManager:
   - Beam
   - CinemachineTarget
   - Wall
+  - building
   layers:
   - Default
   - TransparentFX
