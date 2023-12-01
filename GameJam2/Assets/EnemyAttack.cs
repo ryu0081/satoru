@@ -6,87 +6,62 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public float attackRange = 2f;
-    public int damage = 10;
-    public float attackCooldown = 60f; // 攻撃のクールダウン時間
+    public float attackCooldown = 60f;
     private float nextAttackTime = 0f;
 
-    //public float timeBetweenAttacks = 0.5f;  //攻撃間
+    private GameObject player;
+    private GameObject building;
 
-    //public int attackDamage = 10;      //ダメージ 10は仮
-
-    //private GameObject player;　　　//プレイヤー判別用
-    //private bool playerInRange;     //プレイヤーにあてる範囲
-    //private float timer;　　　　　　//クールタイム
+    public int damage = 10; // ダメージ量
 
     private void Awake()
     {
-        //player = GameObject.FindGameObjectWithTag("Player");   //タグ「プレイヤー」を感知する
+        // よくアクセスするゲームオブジェクトへの参照をキャッシュ
+        player = GameObject.FindGameObjectWithTag("Player");
+        building = GameObject.FindGameObjectWithTag("building");
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        // クールダウンが終了しており、プレイヤーが攻撃範囲内にいるかどうかを確認
         if (Time.time >= nextAttackTime)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            GameObject target = GetClosestTarget();
 
-            if (player != null && Vector3.Distance(transform.position, player.transform.position) < attackRange)
+            if (target != null && Vector3.Distance(transform.position, target.transform.position) < attackRange)
             {
-                // 攻撃を開始
-                Attack();
-
-                // 次の攻撃のクールダウン時間を設定
+                Attack(target);
                 nextAttackTime = Time.time + 1f / attackCooldown;
             }
         }
-        //timer += Time.deltaTime;　　　　
-
-        //if (timer >= timeBetweenAttacks && playerInRange)
-        //{
-        //    Attack();　　　　　//クールタイムが開けてるかつプレイヤーが範囲内なら攻撃
-        //    //攻撃のアニメーションを入れるならここ
-
-        //}
     }
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject == player)
-    //    {
-    //        playerInRange = true;      //攻撃範囲にいるかどうかのフラグ
-    //        Debug.Log("攻撃");
-    //    }
-    //}
 
-    //void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject == player)
-    //    {
-    //        playerInRange = false;
-    //    }
-    //}
-    //void Attack()
-    //{
-    //    timer = 0f;
-
-    //    // Insert player health deduction logic here
-    //    // Example: playerHealth.TakeDamage(attackDamage);
-    //}
-    void Attack()
+    GameObject GetClosestTarget()
     {
-        //// プレイヤーにダメージを与えるなどのアクションを実行
-        //Player.TakeDamage(damage);
-        // プレイヤーにダメージを与えるなどのアクションを実行
-        // この部分は、プレイヤーにダメージを与える関数に置き換える必要があります
-        Debug.Log("Player Attacked!");
+        float playerDistance = (player != null) ? Vector3.Distance(transform.position, player.transform.position) : float.MaxValue;
+        float buildingDistance = (building != null) ? Vector3.Distance(transform.position, building.transform.position) : float.MaxValue;
 
-        // クールダウンが設定されているか確認
-        Debug.Log("Next Attack Time: " + nextAttackTime);
+        // より距離が短いターゲット（プレイヤーまたは建物）を返す
+        return (playerDistance < buildingDistance) ? player : building;
+    }
+
+    void Attack(GameObject target)
+    {
+        // 選択されたターゲットにダメージを与えるロジックを実装
+        // 例: target.GetComponent<PlayerHealth>().TakeDamage(10);
+
+        Debug.Log("敵が" + target.name + "に攻撃しました！");
+
+        // ターゲットにダメージを与えるロジック
+        // コライダーを使った衝突検出
+        Collider targetCollider = target.GetComponent<Collider>();
+
+        if (targetCollider != null)
+        {
+            // ダメージを与える
+            targetCollider.gameObject.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+        }
+
+        // 最終ビルドではデバッグログを削除または無効化することを検討してください
+        //Debug.Log("次の攻撃時間: " + nextAttackTime);
     }
 }
