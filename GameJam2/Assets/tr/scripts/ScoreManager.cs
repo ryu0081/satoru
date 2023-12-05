@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     public HPManger[] hpM;
 
-    int pScore = 0;
+    float pScore = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +27,6 @@ public class ScoreManager : MonoBehaviour
         pScore += hpM[2].pScore;
         pScore += hpM[3].pScore;
 
-        GetComponent<Text>().text = pScore.ToString();
+        GetComponent<Text>().text = Mathf.Ceil(pScore).ToString();
     }
 }

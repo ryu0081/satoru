@@ -14,8 +14,8 @@ public class HPManger : MonoBehaviour
 
     float damage = 0.001f;
 
-    public int pScore = 0;           //プレイヤー用のスコア
-    public int eScore = 0;           //Enemy用のスコア
+    public float pScore = 0;           //プレイヤー用のスコア
+    public float eScore = 0;           //Enemy用のスコア
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class HPManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isDamage[0] = bc[0].isDamage;
+        isDamage[0] = bc[0].isDamage;               //ダメージを与えている時、プレイヤーか敵が判断する
         isDamage[1] = bc[1].isDamage;
         isDamage[2] = bc[2].isDamage;
         isDamage[3] = bc[3].isDamage;
@@ -50,13 +50,14 @@ public class HPManger : MonoBehaviour
             if (isPlayer[0] || isPlayer[1] || isPlayer[2] || isPlayer[3])       //プレイヤーが建物を破壊しているとき
             {
                 GetComponent<Image>().fillAmount -= damage;
-                pScore += (int)damage * 100;
+                pScore += (damage * 1000) / 1000;
+                Debug.Log(pScore);
             }
 
             if (isEnemy[0] || isEnemy[1] || isEnemy[2] || isEnemy[3])           //Enemyが建物を破壊しているとき
             {
                 GetComponent<Image>().fillAmount -= damage;
-                eScore += (int)damage * 100;
+                eScore += (damage * 1000) / 1000;
 
             }
         }
