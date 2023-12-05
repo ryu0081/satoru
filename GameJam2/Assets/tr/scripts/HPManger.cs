@@ -50,8 +50,7 @@ public class HPManger : MonoBehaviour
             if (isPlayer[0] || isPlayer[1] || isPlayer[2] || isPlayer[3])       //ƒvƒŒƒCƒ„[‚ªŒš•¨‚ğ”j‰ó‚µ‚Ä‚¢‚é‚Æ‚«
             {
                 GetComponent<Image>().fillAmount -= damage;
-                pScore += (damage * 1000) / 1000;
-                Debug.Log(pScore);
+                pScore += 0.001f;
             }
 
             if (isEnemy[0] || isEnemy[1] || isEnemy[2] || isEnemy[3])           //Enemy‚ªŒš•¨‚ğ”j‰ó‚µ‚Ä‚¢‚é‚Æ‚«

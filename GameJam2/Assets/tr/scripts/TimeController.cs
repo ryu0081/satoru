@@ -27,6 +27,6 @@ public class TimeController : MonoBehaviour
             m++;
             s = 0;
         }
-        GetComponent<Text>().text = m.ToString() + "\n" + Mathf.Ceil(s).ToString();
+        GetComponent<Text>().text = m.ToString()+"m" + "\n" + Mathf.Ceil(s).ToString()+"s";
     }
 }
