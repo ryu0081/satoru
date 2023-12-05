@@ -12,6 +12,8 @@ public class EnemyAttack : MonoBehaviour
     private GameObject player;
     private GameObject building;
 
+    private Animator _animator;
+
     public int damage = 10; // ダメージ量
 
     private void Awake()
@@ -54,6 +56,8 @@ public class EnemyAttack : MonoBehaviour
         // ターゲットにダメージを与えるロジック
         // コライダーを使った衝突検出
         Collider targetCollider = target.GetComponent<Collider>();
+
+
 
         if (targetCollider != null)
         {

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.InputSystem.XR;
 
 public class EnemyMove : MonoBehaviour
 {
@@ -8,6 +10,9 @@ public class EnemyMove : MonoBehaviour
     [SerializeField]
     [Tooltip("探索グループ")]  //巡回地点を作る必要がある
     GameObject pointGroup;
+
+    [SerializeField]
+    NavMeshAgent navmeshAgent = null;
 
     [SerializeField]
     [Tooltip("はじめに探索する地点")]
@@ -25,16 +30,39 @@ public class EnemyMove : MonoBehaviour
     [Tooltip("敵のスピード")]
     float speed = 5.0f;
 
+    private float _animationBlend;
+
+    public float GroundedOffset = -0.14f;
+    public float GroundedRadius = 0.28f;
+    public LayerMask GroundLayers;
+    public bool Grounded = true;
+
+    private bool _hasAnimator;
     //敵が保持している変数
     private List<Transform> points = new List<Transform>();
+    private CharacterController _controller;
     private bool tracking = false;
-    private GameObject target;
+    public GameObject target;
+
+    private Animator _animator;
+    // アニメーター
+    //private Animator m_Animator = null;
+
+    float speedx;
+    float speedy;
+
+    // アニメーションID
+    private int _animIDSpeed;
+    private int _animIDGrounded;
 
     // Start is called before the first frame update
     void OnEnable()
     {
-        //targetのゲームオブジェクトを取得
+        ////targetのゲームオブジェクトを取得
         target = GameObject.Find("Player");
+
+        //m_Animator = GetComponent<Animator>();
+
         //巡回地点pointsのリストに追加
         for (int i = 0; i < pointGroup.transform.childCount; i++)
         {
@@ -42,10 +70,37 @@ public class EnemyMove : MonoBehaviour
             pointGroup.transform.GetChild(i).GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0);
         }
     }
+    private void Start()
+    {
+        _controller = GetComponent<CharacterController>();
+        _hasAnimator = TryGetComponent(out _animator);
+        //AssignAnimationIDs();
+    }
 
+
+    private void AssignAnimationIDs()
+    {
+        _animIDSpeed = Animator.StringToHash("Speed");
+        _animIDGrounded = Animator.StringToHash("Grounded");
+    }
+    private void GroundedCheck()
+    {
+        // オフセットを使用して球の位置を設定します
+        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset,
+            transform.position.z);
+        Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
+            QueryTriggerInteraction.Ignore);
+
+        // キャラクターを使用している場合はアニメーターを更新する
+        if (_hasAnimator)
+        {
+            _animator.SetBool(_animIDGrounded, Grounded);
+        }
+    }
     // Update is called once per frame
     void Update()
-    {
+        {
+        navmeshAgent.SetDestination(target.transform.position);
         var targetPos = target.transform.position;
         //敵と巡回地点の距離を計算
         var distanceToTarget = Vector3.Distance(this.transform.position, targetPos);
@@ -58,6 +113,14 @@ public class EnemyMove : MonoBehaviour
             if (distanceToTarget > quitRange) tracking = false;
             //移動処理を実行
             this.transform.position = Vector3.Lerp(transform.position, target.transform.position, currentPos);
+            if (_hasAnimator)
+            {
+               
+                //_animIDSpeed += 1;
+                _animator.SetFloat("Speed",navmeshAgent.desiredVelocity.magnitude);
+            }
+
+
         }
         //プレイヤーとの距離がquitRange外ならば探索に戻る
         else if (!tracking)
@@ -68,9 +131,15 @@ public class EnemyMove : MonoBehaviour
             if (points.Count == 0) return;
             //移動処理を実行
             this.transform.position = Vector3.Lerp(transform.position, points[destPoint].transform.position, currentPos);
-            //次の巡回地点を決定
-            if (currentPos >= 1)
+            if (_hasAnimator)
             {
+                //_animIDSpeed += 1;
+                _animator.SetFloat("Speed", navmeshAgent.desiredVelocity.magnitude);
+            }
+                //次の巡回地点を決定
+                if (currentPos >= 1)
+            {
+                
                 destPoint = (destPoint + 1) % points.Count;
             }
         }
