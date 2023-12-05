@@ -9,19 +9,17 @@ public class Beamatarihantei : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine("hantei");
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        if(time>=6f)
-        {
-            Debug.Log("”»’èON");
-
-
-            efecthantei.SetActive(true);
-        }
+        
+    }
+    IEnumerator hantei()
+    {
+        yield return new WaitForSeconds(6.0f);
+        efecthantei.SetActive(true);
     }
 }
