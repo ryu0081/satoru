@@ -7,14 +7,16 @@ public class SkillCoolTimecs : MonoBehaviour
 {
     public GameObject[] skillTime;
 
-    float sTime = 18.0f;
-    float bTime = 4.0f;
-    float hTime = 3.0f;
-    float time = 0f;
+    int sTime = 18;
+    int bTime = 4;
+    int hTime = 3;
 
     bool isSatoru = false;
     bool isBeam = false;
-    bool homing = false;
+    bool isHoming = false;
+    bool isOne = false;
+    bool isTwo = false;
+    bool isThree = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,28 +32,110 @@ public class SkillCoolTimecs : MonoBehaviour
 
     void Skill()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if(!isTwo && !isThree)
         {
+            if (Input.GetKeyDown(KeyCode.Alpha1)) isOne = true;
             if (Input.GetMouseButtonDown(0))
             {
                 isSatoru = true;
-                time = sTime;
+            }
 
+            if (isOne && isSatoru)
+            {
+                StartCoroutine("SatoruAT");
             }
 
         }
 
-        if (isSatoru)
+        if (!isOne && !isThree)
         {
-            Debug.Log("A");
-            skillTime[0].GetComponent<Text>().text = time.ToString("n2");
-            if (time <= 0.0f)
+            if (Input.GetKeyDown(KeyCode.Alpha2)) isTwo = true;
+            if (Input.GetMouseButtonDown(0))
             {
-                isSatoru = false;
-                time = 0.0f;
+                isBeam = true;
             }
-            time -= Time.deltaTime;
 
+            if (isTwo && isBeam)
+            {
+                Debug.Log("BB");
+                StartCoroutine("BeamAT");
+            }
+
+        }
+
+
+
+        if (!isTwo && !isOne)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha3)) isThree = true;
+            if (Input.GetMouseButtonDown(0))
+            {
+                isHoming = true;
+            }
+
+            if (isThree && isHoming)
+            {
+                StartCoroutine("HomingAT");
+            }
+
+        }
+
+
+
+    }
+
+    IEnumerator SatoruAT()                                          //攻撃1のクールタイム
+    {
+        isOne = false;
+        isSatoru = false;
+        for(int i = sTime; i >= 0; i--)
+        {
+            if (i == 0)
+            {
+                skillTime[0].GetComponent<Text>().text = "";
+                break;
+            }
+
+            skillTime[0].GetComponent<Text>().text = i.ToString();
+
+            yield return new WaitForSeconds(1);
+        }
+
+    }
+
+    IEnumerator BeamAT()                                        //攻撃2のクールタイム
+    {
+        isTwo = false;
+        isBeam = false;
+        for (int i = bTime; i >= 0; i--)
+        {
+            if (i == 0)
+            {
+                skillTime[1].GetComponent<Text>().text = "";
+                break;
+            }
+
+            skillTime[1].GetComponent<Text>().text = i.ToString();
+
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    IEnumerator HomingAT()                                        //攻撃3のクールタイム
+    {
+        isTwo = false;
+        isHoming = false;
+        for (int i = hTime; i >= 0; i--)
+        {
+            if (i == 0)
+            {
+                skillTime[2].GetComponent<Text>().text = "";
+                break;
+            }
+
+            skillTime[2].GetComponent<Text>().text = i.ToString();
+
+            yield return new WaitForSeconds(1);
         }
     }
 }

@@ -50,7 +50,6 @@ public class IconController : MonoBehaviour
 
         if (button1)
         {
-            Debug.Log("1");
             red -= 50;
             Icon[0].GetComponent<Image>().color = new Color(255, red, red, 255);        //1を押したら2と3をオフにする
 
@@ -60,7 +59,6 @@ public class IconController : MonoBehaviour
         }
         if (button2)
         {
-            Debug.Log("2");
 
             red -= 50;
             Icon[1].GetComponent<Image>().color = new Color(255, red, red, 255);        //2を押したら1と3をオフにする
