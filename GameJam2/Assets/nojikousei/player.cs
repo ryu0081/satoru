@@ -14,12 +14,12 @@ public class player : MonoBehaviour
     float upFly = 1.75f;//上昇するスピード
     public GameObject camera;
     Camera maincamera;
-    public GameObject[] satoruEfect;//ビームのエフェクト
-    public GameObject satorusppon;//生成する場所
+    //public GameObject[] satoruEfect;//ビームのエフェクト
+    //public GameObject satorusppon;//生成する場所
     bool attack = false;
     GameObject obj;
     Vector3 angle;
-    public float anglestop = 30f;
+   // public float anglestop = 30f;
     int efectnunber = 0;
     public GameObject playerobj;
     float cooltime;
@@ -29,7 +29,7 @@ public class player : MonoBehaviour
     bool jyakube = true;
     bool homingbe = true;
     Vector3 muki;
-    public GameObject kubi;
+    //public GameObject kubi;
     //Vector3 angle;//カメラの縦アングル
     //public float anglestop=30f;//アングル制御
     // Start is called before the first frame update
@@ -109,117 +109,117 @@ public class player : MonoBehaviour
         transform.position += movement * activeMoveSpeed * Time.deltaTime;
     }
     //上昇、下降
-    void Fly()
-    {
-        //スペースキーを押したら上昇する
-        if (Input.GetKey(KeyCode.Space))
-        {
-            transform.position += new Vector3(0, upFly, 0);
-        }
-        //コントロールキーを押したら下降する
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            transform.position -= new Vector3(0, upFly, 0);
-        }
+    //void Fly()
+    //{
+    //    //スペースキーを押したら上昇する
+    //    if (Input.GetKey(KeyCode.Space))
+    //    {
+    //        transform.position += new Vector3(0, upFly, 0);
+    //    }
+    //    //コントロールキーを押したら下降する
+    //    if (Input.GetKey(KeyCode.LeftControl))
+    //    {
+    //        transform.position -= new Vector3(0, upFly, 0);
+    //    }
 
-    }
+    //}
     //攻撃
-    void Attack()
-    {
-        if(!satobe)
-        {
-            cooltime += Time.deltaTime;
-            if(cooltime>12f)
-            {
-                satobe = true;
-            }
-        }
-        if (!jyakube)
+    //void Attack()
+    //{
+    //    if(!satobe)
+    //    {
+    //        cooltime += Time.deltaTime;
+    //        if(cooltime>12f)
+    //        {
+    //            satobe = true;
+    //        }
+    //    }
+    //    if (!jyakube)
 
-        {
-            cooltime += Time.deltaTime;
-            if (cooltime > 4f)
-            {
-                jyakube = true;
-            }
-        }
-        if (!homingbe)
-        {
-            cooltime += Time.deltaTime;
-            if (cooltime > 3f)
-            {
-                homingbe = true;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            efectnunber = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            efectnunber = 1;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            efectnunber = 2;
-        }
+    //    {
+    //        cooltime += Time.deltaTime;
+    //        if (cooltime > 4f)
+    //        {
+    //            jyakube = true;
+    //        }
+    //    }
+    //    if (!homingbe)
+    //    {
+    //        cooltime += Time.deltaTime;
+    //        if (cooltime > 3f)
+    //        {
+    //            homingbe = true;
+    //        }
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha1))
+    //    {
+    //        efectnunber = 0;
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha2))
+    //    {
+    //        efectnunber = 1;
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha3))
+    //    {
+    //        efectnunber = 2;
+    //    }
         
-        if (Input.GetMouseButtonDown(0))
-        {
-            switch (efectnunber)
-            {
-                case 0:
-                    if(satobe)
-                    {
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        switch (efectnunber)
+    //        {
+    //            case 0:
+    //                if(satobe)
+    //                {
                         
-                        obj = (GameObject)Instantiate(satoruEfect[0], satorusppon.transform.position, transform.rotation);
-                        obj.transform.parent = camera.transform;
-                        satobe = false;
-                    }
-                    break;
-                case 1:
-                    if (jyakube)
-                    {
+    //                    obj = (GameObject)Instantiate(satoruEfect[0], satorusppon.transform.position, transform.rotation);
+    //                    obj.transform.parent = camera.transform;
+    //                    satobe = false;
+    //                }
+    //                break;
+    //            case 1:
+    //                if (jyakube)
+    //                {
 
-                        obj = (GameObject)Instantiate(satoruEfect[1], satorusppon.transform.position, transform.rotation);
-                        obj.transform.parent = camera.transform;
-                        satobe = false;
-                    }
-                    break;
-                case 2:
-                    if (homingbe)
-                    {
+    //                    obj = (GameObject)Instantiate(satoruEfect[1], satorusppon.transform.position, transform.rotation);
+    //                    obj.transform.parent = camera.transform;
+    //                    satobe = false;
+    //                }
+    //                break;
+    //            case 2:
+    //                if (homingbe)
+    //                {
 
-                        obj = (GameObject)Instantiate(satoruEfect[2], satorusppon.transform.position, transform.rotation);
-                        obj.transform.parent = camera.transform;
-                        satobe = false;
-                    }
+    //                    obj = (GameObject)Instantiate(satoruEfect[2], satorusppon.transform.position, transform.rotation);
+    //                    obj.transform.parent = camera.transform;
+    //                    satobe = false;
+    //                }
                    
-                    break;
-            }
+    //                break;
+    //        }
             
                 
             
-            //攻撃処理をここに書く。
-            //Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
-            //gameObject.transform.parent = satoruEfect.gameObject.transform;
-        }
+    //        //攻撃処理をここに書く。
+    //        //Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
+    //        //gameObject.transform.parent = satoruEfect.gameObject.transform;
+    //    }
 
-    }
+    //}
     //ズーム
-    void Zoom()
-    {
-        maincamera.fieldOfView = 60.0f;
-        //ボタンを押してる間
-        if (Input.GetMouseButton(1))
-        {
-            maincamera.fieldOfView = 10.0f;
-            //if(maincamera.fieldOfView<=20f)
-            //{
-            //    maincamera.fieldOfView = 20f;
-            //}
-        }
-    }
+    //void Zoom()
+    //{
+    //    maincamera.fieldOfView = 60.0f;
+    //    //ボタンを押してる間
+    //    if (Input.GetMouseButton(1))
+    //    {
+    //        maincamera.fieldOfView = 10.0f;
+    //        //if(maincamera.fieldOfView<=20f)
+    //        //{
+    //        //    maincamera.fieldOfView = 20f;
+    //        //}
+    //    }
+    //}
 
     private void FixedUpdate()
     {

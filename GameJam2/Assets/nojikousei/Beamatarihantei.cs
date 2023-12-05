@@ -18,6 +18,9 @@ public class Beamatarihantei : MonoBehaviour
         time += Time.deltaTime;
         if(time>=6f)
         {
+            Debug.Log("”»’èON");
+
+
             efecthantei.SetActive(true);
         }
     }
