@@ -112,12 +112,13 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
-        public GameObject[] satoruEfect;
-        public GameObject satoruSpoon;
+        //public GameObject[] satoruEfect;
+        //public GameObject satoruSpoon;
+       
         GameObject obj;
-        bool satobe = true;
-        bool jyakube = true;
-        bool homingbe = true;
+        bool satobe ;
+        bool jyakube;
+        bool homingbe;
         float satorucooltime;
         float jyakucooltime;
         float homicooltime;
@@ -167,8 +168,11 @@ namespace StarterAssets
 
         private void Update()
         {
+            satobe = camerasystem.satobe;
+            jyakube = camerasystem.jyakube;
+            homingbe = camerasystem.homingbe;
             _hasAnimator = TryGetComponent(out _animator);
-            Attack();
+            //Attack();
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -401,83 +405,84 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
-        IEnumerator ReturnSatoru()
-        {
-            satobe = false;
-            yield return new WaitForSeconds(18.0f);
-            satobe = true;
-        }
-        IEnumerator ReturnJyaku()
-        {
-            jyakube = false;
-            yield return new WaitForSeconds(4.0f);
-            jyakube = true;
-        }
-        IEnumerator ReturnHomi()
-        {
-            homingbe = false;
-            yield return new WaitForSeconds(3.0f);
-            homingbe = true;
-        }
-        public void Attack()
-        {
+        //IEnumerator ReturnSatoru()
+        //{
+        //    satobe = false;
+        //    yield return new WaitForSeconds(18.0f);
+        //    satobe = true;
+        //}
+        //IEnumerator ReturnJyaku()
+        //{
+        //    jyakube = false;
+        //    yield return new WaitForSeconds(4.0f);
+        //    jyakube = true;
+        //}
+        //IEnumerator ReturnHomi()
+        //{
+        //    homingbe = false;
+        //    yield return new WaitForSeconds(3.0f);
+        //    homingbe = true;
+        //}
+        //public void Attack()
+        //{
 
 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                efectnunber = 0;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                efectnunber = 1;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                efectnunber = 2;
-            }
+        //    if (Input.GetKeyDown(KeyCode.Alpha1))
+        //    {
+        //        efectnunber = 0;
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.Alpha2))
+        //    {
+        //        efectnunber = 1;
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.Alpha3))
+        //    {
+        //        efectnunber = 2;
+        //    }
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                switch (efectnunber)
-                {
-                    case 0:
-                        if (satobe)
-                        {
+        //    if (Input.GetMouseButtonDown(0))
+        //    {
+        //        switch (efectnunber)
+        //        {
+        //            case 0:
+        //                if (satobe)
+        //                {
 
-                            obj = (GameObject)Instantiate(satoruEfect[0], satoruSpoon.transform.position, transform.rotation);
-                            obj.transform.parent = gameObject.transform;
-                            StartCoroutine("ReturnSatoru");
-                        }
-                        break;
-                    case 1:
-                        if (jyakube)
-                        {
+        //                    obj = (GameObject)Instantiate(satoruEfect[0], satoruSpoon.transform.position, transform.rotation);
+        //                    obj.transform.parent = gameObject.transform;
+                            
+        //                    StartCoroutine("ReturnSatoru");
+        //                }
+        //                break;
+        //            case 1:
+        //                if (jyakube)
+        //                {
 
-                            obj = (GameObject)Instantiate(satoruEfect[1], satoruSpoon.transform.position, transform.rotation);
-                            obj.transform.parent = gameObject.transform;
-                            StartCoroutine("ReturnJyaku");
-                        }
-                        break;
-                    case 2:
-                        if (homingbe)
-                        {
+        //                    obj = (GameObject)Instantiate(satoruEfect[1], satoruSpoon.transform.position, transform.rotation);
+        //                    obj.transform.parent = gameObject.transform;
+        //                    StartCoroutine("ReturnJyaku");
+        //                }
+        //                break;
+        //            case 2:
+        //                if (homingbe)
+        //                {
 
-                            obj = (GameObject)Instantiate(satoruEfect[2], satoruSpoon.transform.position, transform.rotation);
-                            obj.transform.parent = gameObject.transform;
-                            StartCoroutine("ReturnHomi");
-                        }
+        //                    obj = (GameObject)Instantiate(satoruEfect[2], satoruSpoon.transform.position, transform.rotation);
+        //                    obj.transform.parent = gameObject.transform;
+        //                    StartCoroutine("ReturnHomi");
+        //                }
 
-                        break;
-                }
+        //                break;
+        //        }
 
 
 
-                //攻撃処理をここに書く。
-                //Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
-                //gameObject.transform.parent = satoruEfect.gameObject.transform;
-            }
+        //        //攻撃処理をここに書く。
+        //        //Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
+        //        //gameObject.transform.parent = satoruEfect.gameObject.transform;
+        //    }
 
-        }
+        //}
     }
 }
 
