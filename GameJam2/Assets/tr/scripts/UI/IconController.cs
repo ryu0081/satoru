@@ -15,7 +15,6 @@ public class IconController : MonoBehaviour
 
     void Start()
     {
-        Icon[0].GetComponent<Image>().color = new Color(255, 0, 0, 255);        //1‚ð‰Ÿ‚µ‚½‚ç2‚Æ3‚ðƒIƒt‚É‚·‚é
     }
 
     void Update()
