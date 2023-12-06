@@ -112,17 +112,18 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
-        //public GameObject[] satoruEfect;
-        //public GameObject satoruSpoon;
-       
+        public GameObject[] satoruEfect;
+        public GameObject satoruSpoon;
+
         GameObject obj;
         bool satobe ;
         bool jyakube;
         bool homingbe;
+        bool cameraON;
         float satorucooltime;
         float jyakucooltime;
         float homicooltime;
-        int efectnunber;
+        int efectnunber=0;
 
         private bool IsCurrentDeviceMouse
         {
@@ -171,16 +172,25 @@ namespace StarterAssets
             satobe = camerasystem.satobe;
             jyakube = camerasystem.jyakube;
             homingbe = camerasystem.homingbe;
+            cameraON = camerasystem.cameraON;
             _hasAnimator = TryGetComponent(out _animator);
             //Attack();
             JumpAndGravity();
             GroundedCheck();
-            Move();
+            if(cameraON)
+            {
+                Move();
+            }
+            
         }
 
         private void LateUpdate()
         {
-            CameraRotation();
+            if(cameraON)
+            {
+                CameraRotation();
+            }
+            
         }
 
         private void AssignAnimationIDs()
@@ -450,7 +460,7 @@ namespace StarterAssets
 
         //                    obj = (GameObject)Instantiate(satoruEfect[0], satoruSpoon.transform.position, transform.rotation);
         //                    obj.transform.parent = gameObject.transform;
-                            
+
         //                    StartCoroutine("ReturnSatoru");
         //                }
         //                break;

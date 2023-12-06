@@ -562,6 +562,8 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  satoruEfect: []
+  satoruSpoon: {fileID: 0}
 --- !u!114 &8363973424579660443
 MonoBehaviour:
   m_ObjectHideFlags: 0
