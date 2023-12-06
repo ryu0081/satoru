@@ -32,53 +32,74 @@ public class SkillCoolTimecs : MonoBehaviour
 
     void Skill()
     {
-        if(!isTwo && !isThree)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1)) isOne = true;
-            if (Input.GetMouseButtonDown(0))
+            if (isThree || isTwo)                           //前に2か3を押されていたらfalseにする
             {
-                isSatoru = true;
+                isOne = false;
+                isTwo = false;
             }
 
-            if (isOne && isSatoru)
-            {
-                StartCoroutine("SatoruAT");
-            }
+            isOne = true;
+        }
+        if (Input.GetMouseButtonDown(0) && isOne)
+        {
 
+            isSatoru = true;
         }
 
-        if (!isOne && !isThree)
+        if (isOne && isSatoru)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha2)) isTwo = true;
-            if (Input.GetMouseButtonDown(0))
-            {
-                isBeam = true;
-            }
-
-            if (isTwo && isBeam)
-            {
-                Debug.Log("BB");
-                StartCoroutine("BeamAT");
-            }
-
+            Debug.Log("1");
+            StartCoroutine("SatoruAT");
         }
 
 
 
-        if (!isTwo && !isOne)
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (Input.GetKeyDown(KeyCode.Alpha3)) isThree = true;
-            if (Input.GetMouseButtonDown(0))
+            if (isOne || isThree)                           //前に1か3を押されていたらfalseにする
             {
-                isHoming = true;
+                isOne = false;
+                isThree = false;
             }
-
-            if (isThree && isHoming)
-            {
-                StartCoroutine("HomingAT");
-            }
-
+            isTwo = true;
         }
+        if (Input.GetMouseButtonDown(0) && isTwo)
+        {
+            isBeam = true;
+        }
+
+        if (isTwo && isBeam)
+        {
+            Debug.Log("2");
+            StartCoroutine("BeamAT");
+        }
+
+
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if(isOne || isTwo)                              //前に1か2を押されていたらfalseにする
+            {
+                isOne = false;
+                isTwo = false;
+            }
+            isThree = true;
+        }
+        if (Input.GetMouseButtonDown(0) && isThree)
+        {
+            isHoming = true;
+        }
+
+        if (isThree && isHoming)
+        {
+            Debug.Log("3");
+            StartCoroutine("HomingAT");
+        }
+
+
 
 
 
@@ -88,7 +109,7 @@ public class SkillCoolTimecs : MonoBehaviour
     {
         isOne = false;
         isSatoru = false;
-        for(int i = sTime; i >= 0; i--)
+        for (int i = sTime; i >= 0; i--)
         {
             if (i == 0)
             {
@@ -100,6 +121,7 @@ public class SkillCoolTimecs : MonoBehaviour
 
             yield return new WaitForSeconds(1);
         }
+
 
     }
 
@@ -119,11 +141,12 @@ public class SkillCoolTimecs : MonoBehaviour
 
             yield return new WaitForSeconds(1);
         }
+
     }
 
     IEnumerator HomingAT()                                        //攻撃3のクールタイム
     {
-        isTwo = false;
+        isThree = false;
         isHoming = false;
         for (int i = hTime; i >= 0; i--)
         {
@@ -137,5 +160,6 @@ public class SkillCoolTimecs : MonoBehaviour
 
             yield return new WaitForSeconds(1);
         }
+
     }
 }

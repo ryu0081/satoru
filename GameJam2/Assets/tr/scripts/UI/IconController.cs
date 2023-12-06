@@ -68,7 +68,6 @@ public class IconController : MonoBehaviour
         }
         if (button3)
         {
-            Debug.Log("3");
 
             red -= 50;
             Icon[2].GetComponent<Image>().color = new Color(255, red, red, 255);        //3‚ð‰Ÿ‚µ‚½‚ç1‚Æ2‚ðƒIƒt‚É‚·‚é
