@@ -10,7 +10,7 @@ public class camerasystem : MonoBehaviour
     public static bool jyakube = true;
     public static bool homingbe = true;
     public static bool cameraON = true;
-    int efectnunber = 0;
+    int efectnunber = 3;
     public GameObject[] satoruEfect;
     public GameObject satoruSpoon;
     public GameObject player;
@@ -108,7 +108,8 @@ public class camerasystem : MonoBehaviour
                         obj.transform.parent = gameObject.transform;
                         StartCoroutine("ReturnHomi");
                     }
-
+                    break;
+                case 3:
                     break;
             }
 
