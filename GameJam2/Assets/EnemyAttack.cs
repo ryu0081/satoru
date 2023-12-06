@@ -99,28 +99,33 @@ public class EnemyAttack : MonoBehaviour
     void AttackPattern1()  //satoruの攻撃
     {
         obj = (GameObject)Instantiate(Attacks[0], satoruSpoon.transform.position, transform.rotation);
-        _animator.SetBool("Satoru", true);
+        this.obj.transform.parent=gameObject.transform;
+        _animator.SetTrigger("1");
         Debug.Log("敵が攻撃しました！");
-        StartCoroutine(ResetAnimationBool("Satoru"));
+       
     }
+
     void AttackPattern2()  //ビームの攻撃
     {
         obj = (GameObject)Instantiate(Attacks[1], satoruSpoon.transform.position, transform.rotation);
-        _animator.SetBool("Attack1", true);
+        this.obj.transform.parent = gameObject.transform;
+        _animator.SetTrigger("2");
         Debug.Log("敵が攻撃しました！");
-        StartCoroutine(ResetAnimationBool("Attack1"));
+        //StartCoroutine(ResetAnimationBool("2"));
     }
+
     void AttackPattern3()  //ホーミングの攻撃
     {
         obj = (GameObject)Instantiate(Attacks[2], satoruSpoon.transform.position, transform.rotation);
-        _animator.SetBool("Homing", true);
+        this.obj.transform.parent = gameObject.transform;
+        _animator.SetTrigger("3");
         Debug.Log("敵が攻撃しました！");
-        StartCoroutine(ResetAnimationBool("Homing"));
+        //StartCoroutine(ResetAnimationBool("3"));
     }
     public IEnumerator ResetAnimationBool(string paramName)
     {
         // Boolパラメータをリセット
-        _animator.SetBool(paramName, false);
+        _animator.SetTrigger(paramName);
 
         yield return null;
     }

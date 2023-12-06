@@ -20,7 +20,7 @@ public class CoreScript : MonoBehaviour
     private void OnParticleCollision(GameObject other)
     {
         // 衝突したオブジェクトが敵または地面であるかを確認
-        if (other.CompareTag("Enemy") || other.CompareTag("Ground") && !other.CompareTag("Player"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Ground"))
         {
             // Sub Emitters を有効にする
             EnableSubEmitters();

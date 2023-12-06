@@ -1276,6 +1276,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.0978877
       objectReference: {fileID: 0}
+    - target: {fileID: 4997129317438103723, guid: 1e963fa63b5de30468fe71191a418414,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: dc3ee508de52a67439e7cfd7ed3aa325, type: 2}
     - target: {fileID: 5073509150867801040, guid: 1e963fa63b5de30468fe71191a418414,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23692,6 +23697,8 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  satoruEfect: []
+  satoruSpoon: {fileID: 0}
 --- !u!114 &5917980580979570532
 MonoBehaviour:
   m_ObjectHideFlags: 0
