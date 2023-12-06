@@ -42,7 +42,7 @@ public class EnemyMove : MonoBehaviour
     private List<Transform> points = new List<Transform>();
     private CharacterController _controller;
     private bool tracking = false;
-    public GameObject target;
+    private GameObject target;
 
     private Animator _animator;
     // アニメーター
@@ -59,7 +59,7 @@ public class EnemyMove : MonoBehaviour
     void OnEnable()
     {
         ////targetのゲームオブジェクトを取得
-        target = GameObject.Find("Player");
+        target = GameObject.FindGameObjectWithTag("Player");
 
         //m_Animator = GetComponent<Animator>();
 
