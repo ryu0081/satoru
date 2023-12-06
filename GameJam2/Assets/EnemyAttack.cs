@@ -6,13 +6,19 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public float attackRange = 2f;
-    public float attackCooldown = 60f;
+    public float attackCooldown = 25f;
     private float nextAttackTime = 0f;
+
+    public GameObject[] Attacks;
 
     private GameObject player;
     private GameObject building;
 
     private Animator _animator;
+
+    public GameObject satoruSpoon;
+
+    GameObject obj;
 
     public int damage = 10; // ダメージ量
 
@@ -21,6 +27,7 @@ public class EnemyAttack : MonoBehaviour
         // よくアクセスするゲームオブジェクトへの参照をキャッシュ
         player = GameObject.FindGameObjectWithTag("Player");
         building = GameObject.FindGameObjectWithTag("building");
+        _animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -31,8 +38,11 @@ public class EnemyAttack : MonoBehaviour
 
             if (target != null && Vector3.Distance(transform.position, target.transform.position) < attackRange)
             {
-                Attack(target);
-                nextAttackTime = Time.time + 1f / attackCooldown;
+                if (CanAttack())
+                {
+                    ChooseAttackPattern(target);
+                    nextAttackTime = Time.time + 1f / attackCooldown;
+                }
             }
         }
     }
@@ -45,20 +55,37 @@ public class EnemyAttack : MonoBehaviour
         // より距離が短いターゲット（プレイヤーまたは建物）を返す
         return (playerDistance < buildingDistance) ? player : building;
     }
+    bool CanAttack()
+    {
+        // 現在の時間が次の攻撃時間を過ぎているかどうかを確認
+        return Time.time >= nextAttackTime;
+    }
 
-    void Attack(GameObject target)
+    void ChooseAttackPattern(GameObject target)
     {
         // 選択されたターゲットにダメージを与えるロジックを実装
         // 例: target.GetComponent<PlayerHealth>().TakeDamage(10);
+        int randomPattern = Random.Range(1, 4); // 1から3までのランダムな数
+        switch (randomPattern)
+        {
+            case 1:
+                AttackPattern1();
+                Debug.Log(randomPattern);
+                break;
 
-        Debug.Log("敵が" + target.name + "に攻撃しました！");
+            case 2:
+                AttackPattern2();
+                Debug.Log(randomPattern);
+                break;
 
+            case 3:
+                AttackPattern3();
+                Debug.Log(randomPattern);
+                break;
+        }
         // ターゲットにダメージを与えるロジック
         // コライダーを使った衝突検出
         Collider targetCollider = target.GetComponent<Collider>();
-
-
-
         if (targetCollider != null)
         {
             // ダメージを与える
@@ -67,5 +94,34 @@ public class EnemyAttack : MonoBehaviour
 
         // 最終ビルドではデバッグログを削除または無効化することを検討してください
         //Debug.Log("次の攻撃時間: " + nextAttackTime);
+    }
+
+    void AttackPattern1()  //satoruの攻撃
+    {
+        obj = (GameObject)Instantiate(Attacks[0], satoruSpoon.transform.position, transform.rotation);
+        _animator.SetBool("Satoru", true);
+        Debug.Log("敵が攻撃しました！");
+        StartCoroutine(ResetAnimationBool("Satoru"));
+    }
+    void AttackPattern2()  //ビームの攻撃
+    {
+        obj = (GameObject)Instantiate(Attacks[1], satoruSpoon.transform.position, transform.rotation);
+        _animator.SetBool("Attack1", true);
+        Debug.Log("敵が攻撃しました！");
+        StartCoroutine(ResetAnimationBool("Attack1"));
+    }
+    void AttackPattern3()  //ホーミングの攻撃
+    {
+        obj = (GameObject)Instantiate(Attacks[2], satoruSpoon.transform.position, transform.rotation);
+        _animator.SetBool("Homing", true);
+        Debug.Log("敵が攻撃しました！");
+        StartCoroutine(ResetAnimationBool("Homing"));
+    }
+    public IEnumerator ResetAnimationBool(string paramName)
+    {
+        // Boolパラメータをリセット
+        _animator.SetBool(paramName, false);
+
+        yield return null;
     }
 }

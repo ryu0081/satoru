@@ -5,11 +5,11 @@ using UnityEngine;
 public class camerasystem : MonoBehaviour
 {
     public GameObject hennaCamera;
-    public GameObject mainCamera;
     public GameObject sabCamera;
     public static bool satobe = true;
     public static bool jyakube = true;
     public static bool homingbe = true;
+    public static bool cameraON = true;
     int efectnunber = 0;
     public GameObject[] satoruEfect;
     public GameObject satoruSpoon;
@@ -48,6 +48,16 @@ public class camerasystem : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         homingbe = true;
     }
+    IEnumerator CameraON()
+    {
+        cameraON = false;
+        hennaCamera.SetActive(false);
+        
+        yield return new WaitForSeconds(10.0f);
+        hennaCamera.SetActive(true);
+        
+        cameraON = true;
+    }
     public void Attack()
     {
 
@@ -67,7 +77,7 @@ public class camerasystem : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            //player=GetComponent<Th>()
+            
             switch (efectnunber)
             {
                 case 0:
@@ -76,8 +86,9 @@ public class camerasystem : MonoBehaviour
 
                         obj = (GameObject)Instantiate(satoruEfect[0], satoruSpoon.transform.position, transform.rotation);
                         obj.transform.parent = gameObject.transform;
-                        Debug.Log("ÉrÅ[ÉÄíÜ");
+                        
                         StartCoroutine("ReturnSatoru");
+                        StartCoroutine("CameraON");
                     }
                     break;
                 case 1:

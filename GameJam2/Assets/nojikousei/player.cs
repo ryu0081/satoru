@@ -29,6 +29,7 @@ public class player : MonoBehaviour
     bool jyakube = true;
     bool homingbe = true;
     Vector3 muki;
+    bool cameraON;
     //public GameObject kubi;
     //Vector3 angle;//カメラの縦アングル
     //public float anglestop=30f;//アングル制御
@@ -42,8 +43,13 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMove();//移動処理
-        Rotate();//回転、カメラアングル
+        cameraON = camerasystem.cameraON;
+        if(!cameraON)
+        {
+            PlayerMove();//移動処理
+            Rotate();//回転、カメラアングル
+        }
+        
         //Fly();//上昇、下降
         //Attack();//攻撃
         //Zoom();//ズーム
