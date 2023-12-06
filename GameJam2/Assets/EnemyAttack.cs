@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public float attackRange = 2f;
-    public float attackCooldown = 15f;
+    public float attackCooldown = 25f;
     private float nextAttackTime = 0f;
 
     public GameObject[] Attacks;
@@ -38,8 +38,11 @@ public class EnemyAttack : MonoBehaviour
 
             if (target != null && Vector3.Distance(transform.position, target.transform.position) < attackRange)
             {
-                ChooseAttackPattern(target);
-                nextAttackTime = Time.time + 1f / attackCooldown;
+                if (CanAttack())
+                {
+                    ChooseAttackPattern(target);
+                    nextAttackTime = Time.time + 1f / attackCooldown;
+                }
             }
         }
     }
@@ -51,6 +54,11 @@ public class EnemyAttack : MonoBehaviour
 
         // より距離が短いターゲット（プレイヤーまたは建物）を返す
         return (playerDistance < buildingDistance) ? player : building;
+    }
+    bool CanAttack()
+    {
+        // 現在の時間が次の攻撃時間を過ぎているかどうかを確認
+        return Time.time >= nextAttackTime;
     }
 
     void ChooseAttackPattern(GameObject target)
@@ -64,10 +72,12 @@ public class EnemyAttack : MonoBehaviour
                 AttackPattern1();
                 Debug.Log(randomPattern);
                 break;
+
             case 2:
                 AttackPattern2();
                 Debug.Log(randomPattern);
                 break;
+
             case 3:
                 AttackPattern3();
                 Debug.Log(randomPattern);

@@ -115,7 +115,7 @@ public class EnemyMove : MonoBehaviour
             this.transform.position = Vector3.Lerp(transform.position, target.transform.position, currentPos);
             if (_hasAnimator)
             {
-               
+
                 //_animIDSpeed += 1;
                 _animator.SetFloat("Speed",navmeshAgent.desiredVelocity.magnitude);
             }
