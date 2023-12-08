@@ -6,7 +6,9 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public float attackRange = 2f;
+
     public float attackCooldown = 25f;
+
     private float nextAttackTime = 0f;
 
     public GameObject[] Attacks;
@@ -71,29 +73,32 @@ public class EnemyAttack : MonoBehaviour
         // 例: target.GetComponent<PlayerHealth>().TakeDamage(10);
         int randomPattern = Random.Range(1, 4); // 1から3までのランダムな数
 
-
-        switch (randomPattern)
+        if (CanAttack())
         {
-            
-            case 1:
-                eAttack = true;
-                AttackPattern1();
-                Debug.Log(randomPattern);
-                break;
+            switch (randomPattern)
+            {
 
-            case 2:
-                eAttack = true;
-                AttackPattern2();
-                Debug.Log(randomPattern);
+                case 1:
+                    eAttack = true;
+                    AttackPattern1();
+                    Debug.Log(randomPattern);
+                    break;
 
-                break;
+                case 2:
+                    eAttack = true;
+                    AttackPattern2();
+                    Debug.Log(randomPattern);
 
-            case 3:
-                eAttack = true;
-                AttackPattern3();
-                Debug.Log(randomPattern);
-                break;
+                    break;
+
+                case 3:
+                    eAttack = true;
+                    AttackPattern3();
+                    Debug.Log(randomPattern);
+                    break;
+            }
         }
+       
         // ターゲットにダメージを与えるロジック
         // コライダーを使った衝突検出
         Collider targetCollider = target.GetComponent<Collider>();
