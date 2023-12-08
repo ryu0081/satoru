@@ -17,7 +17,10 @@ public class ScoreManager2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AddScore();
+        if (camerasystem.cameraON)
+        {
+            AddScore();
+        }
     }
 
     void AddScore()

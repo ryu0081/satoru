@@ -13,6 +13,7 @@ public class buildController : MonoBehaviour
     //倒したときのエフェクト
     public GameObject breakEffect;
     GameObject effect;
+    bool satorub;
 
     Vector3 pos = new Vector3(0.0f, 20.0f, 0.0f);
 
@@ -25,13 +26,23 @@ public class buildController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        satoruB();
     }
 
-    void fall()
+    void satoruB()
     {
-        transform.position += new Vector3(0.0f, speed, 0.0f);
+        satorub = camerasystem.cameraON;
+        if (satorub)
+        {
+            isDamage = false;                   //ビームを撃ってない時、false
+            Destroy(effect);
+        }
+        else
+        {
+            isDamage = true;                    //ビームを撃っている時、true
+        }
     }
+
 
     //エフェクトを生成する
     void GenerateEffect()

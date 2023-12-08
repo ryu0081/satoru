@@ -17,6 +17,9 @@ public class SkillCoolTimecs : MonoBehaviour
     bool isOne = false;
     bool isTwo = false;
     bool isThree = false;
+    bool isbefoS = false;
+    bool isbefoB = false;
+    bool isbefoH = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,23 +37,25 @@ public class SkillCoolTimecs : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (isThree || isTwo)                           //前に2か3を押されていたらfalseにする
+            isbefoS = true;
+            if (isbefoH || isbefoB)                           //前に2か3を押されていたらfalseにする
             {
-                isOne = false;
-                isTwo = false;
+                isbefoB= false;
+                isbefoH= false;
+
             }
 
             isOne = true;
         }
-        if (Input.GetMouseButtonDown(0) && isOne)
+        if (Input.GetMouseButtonDown(0) && (isOne || isbefoS))
         {
+            if (!isOne) isOne = true;
 
             isSatoru = true;
         }
 
         if (isOne && isSatoru)
         {
-            Debug.Log("1");
             StartCoroutine("SatoruAT");
         }
 
@@ -58,21 +63,24 @@ public class SkillCoolTimecs : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (isOne || isThree)                           //前に1か3を押されていたらfalseにする
+            isbefoB = true;
+
+            if (isbefoS || isbefoH)                           //前に1か3を押されていたらfalseにする
             {
-                isOne = false;
-                isThree = false;
+                isbefoS = false;
+                isbefoH = false;
             }
             isTwo = true;
         }
-        if (Input.GetMouseButtonDown(0) && isTwo)
+        if (Input.GetMouseButtonDown(0) && isTwo || Input.GetMouseButtonDown(0) && isbefoB)
         {
+            if (!isTwo) isTwo = true;
+
             isBeam = true;
         }
 
         if (isTwo && isBeam)
         {
-            Debug.Log("2");
             StartCoroutine("BeamAT");
         }
 
@@ -81,21 +89,24 @@ public class SkillCoolTimecs : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if(isOne || isTwo)                              //前に1か2を押されていたらfalseにする
+            isbefoH = true;
+            if (isbefoS || isbefoB)                              //前に1か2を押されていたらfalseにする
             {
-                isOne = false;
-                isTwo = false;
+
+                isbefoS = false;
+                isbefoB = false;
+
             }
             isThree = true;
         }
-        if (Input.GetMouseButtonDown(0) && isThree)
+        if (Input.GetMouseButtonDown(0) && (isThree || isbefoH))
         {
+            if (!isThree) isThree = true;
             isHoming = true;
         }
 
         if (isThree && isHoming)
         {
-            Debug.Log("3");
             StartCoroutine("HomingAT");
         }
 
