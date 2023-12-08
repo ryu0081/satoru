@@ -8,6 +8,6 @@ public class ChangeScene : MonoBehaviour
     // Start is called before the first frame update
     public void change_button()
     {
-        SceneManager.LoadScene("TestmapScene");  //""‚Ì’†‚ÉGameScene–¼‚ð“ü‚ê‚é
+        SceneManager.LoadScene("TestMap");  //""‚Ì’†‚ÉGameScene–¼‚ð“ü‚ê‚é
     }
 }
