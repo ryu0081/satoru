@@ -14,12 +14,13 @@ public class camerasystem : MonoBehaviour
     public GameObject[] satoruEfect;
     public GameObject satoruSpoon;
     public GameObject player;
+    Animator animator;
     
     GameObject obj;
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -51,11 +52,12 @@ public class camerasystem : MonoBehaviour
     IEnumerator CameraON()
     {
         cameraON = false;
+        animator.SetBool("Beam",true);
         hennaCamera.SetActive(false);
         
         yield return new WaitForSeconds(10.0f);
         hennaCamera.SetActive(true);
-        
+        animator.SetBool("Beam", false);
         cameraON = true;
     }
     public void Attack()
