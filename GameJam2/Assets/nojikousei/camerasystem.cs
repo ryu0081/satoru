@@ -64,8 +64,16 @@ public class camerasystem : MonoBehaviour
     IEnumerator jyakuko()
     {
         jyaku = true;
+        animator.SetBool("jyaku", true);
         yield return new WaitForSeconds(2.0f);
+        animator.SetBool("jyaku", false);
         jyaku = false;
+    }
+    IEnumerator hom()
+    {
+        animator.SetBool("hom", true);
+        yield return new WaitForSeconds(1.0f);
+        animator.SetBool("hom", false);
     }
     public void Attack()
     {
@@ -117,6 +125,7 @@ public class camerasystem : MonoBehaviour
                         obj = (GameObject)Instantiate(satoruEfect[2], satoruSpoon.transform.position, transform.rotation);
                         obj.transform.parent = gameObject.transform;
                         StartCoroutine("ReturnHomi");
+                        StartCoroutine("hom");
                     }
                     break;
                 case 3:
