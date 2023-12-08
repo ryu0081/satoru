@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 10
-  attackCooldown: 0.1
+  attackCooldown: 0.001
   Attacks:
   - {fileID: 5448953145663348350, guid: 42c6eca30c2feb545b55b771e9eca704, type: 3}
   - {fileID: 531034932317582834, guid: 79c4ecb68925b68449456e57d2c868c1, type: 3}
