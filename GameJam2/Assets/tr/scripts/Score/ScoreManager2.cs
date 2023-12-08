@@ -7,7 +7,7 @@ public class ScoreManager2 : MonoBehaviour
 {
     public HPManger[] hpM;
 
-    float eScore = 0;
+    public float eScore = 0;
     // Start is called before the first frame update
     void Start()
     {
