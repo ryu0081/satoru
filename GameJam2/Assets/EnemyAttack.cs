@@ -7,7 +7,7 @@ public class EnemyAttack : MonoBehaviour
 {
     public float attackRange = 2f;
 
-    public float attackCooldown = 25f;
+    public float attackCooldown = 0.001f;
 
     private float nextAttackTime = 0f;
 
