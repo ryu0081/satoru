@@ -17,6 +17,8 @@ public class HPManger : MonoBehaviour
     public float pScore = 0;           //プレイヤー用のスコア
     public float eScore = 0;           //Enemy用のスコア
 
+    public bool isFinish = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,13 +53,19 @@ public class HPManger : MonoBehaviour
             if (isPlayer[0] || isPlayer[1] || isPlayer[2] || isPlayer[3])       //プレイヤーが建物を破壊しているとき
             {
                 GetComponent<Image>().fillAmount -= damage;
+                if (GetComponent<Image>().fillAmount == 0)
+                {
+                    isFinish = true;
+                }
                 pScore += 0.001f;
             }
 
             if (isEnemy[0] || isEnemy[1] || isEnemy[2] || isEnemy[3])           //Enemyが建物を破壊しているとき
             {
                 GetComponent<Image>().fillAmount -= damage;
-                eScore += (damage * 1000) / 1000;
+                if (GetComponent<Image>().fillAmount == 0) isFinish = true;
+
+                eScore += 0.001f;
 
             }
         }
