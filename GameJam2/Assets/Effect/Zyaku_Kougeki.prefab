@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: 7801696958819613534}
   m_Layer: 0
   m_Name: Zyaku_Kougeki
-  m_TagString: Untagged
+  m_TagString: Beam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
