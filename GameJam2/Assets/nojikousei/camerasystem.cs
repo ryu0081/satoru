@@ -10,6 +10,7 @@ public class camerasystem : MonoBehaviour
     public static bool jyakube = true;
     public static bool homingbe = true;
     public static bool cameraON = true;
+    public static bool jyaku = false;
     int efectnunber = 3;
     public GameObject[] satoruEfect;
     public GameObject satoruSpoon;
@@ -60,6 +61,12 @@ public class camerasystem : MonoBehaviour
         animator.SetBool("Beam", false);
         cameraON = true;
     }
+    IEnumerator jyakuko()
+    {
+        jyaku = true;
+        yield return new WaitForSeconds(2.0f);
+        jyaku = false;
+    }
     public void Attack()
     {
 
@@ -100,6 +107,7 @@ public class camerasystem : MonoBehaviour
                         obj = (GameObject)Instantiate(satoruEfect[1], satoruSpoon.transform.position, transform.rotation);
                         obj.transform.parent = gameObject.transform;
                         StartCoroutine("ReturnJyaku");
+                        StartCoroutine("jyakuko");
                     }
                     break;
                 case 2:
