@@ -9,7 +9,7 @@ public class player : MonoBehaviour
     private float verticalMouseInput;//y軸の回転を格納　回転を制限したいから
     private Vector3 moveDir;//プレイヤーの入力を格納（移動）
     private Vector3 movement;//進む方向を格納する変数
-    private float activeMoveSpeed = 10;//実際の移動速度
+    private float activeMoveSpeed = 7;//実際の移動速度
     bool dush = false;//ダッシュ判定
     float upFly = 1.75f;//上昇するスピード
     public GameObject camera;

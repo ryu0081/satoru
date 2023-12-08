@@ -106,8 +106,11 @@ public class EnemyMove : MonoBehaviour
         var distanceToTarget = Vector3.Distance(this.transform.position, targetPos);
         //敵とプレイヤーとの距離を計算
         var distanceToNextPoint = Vector3.Distance(this.transform.position, points[destPoint].transform.position);
+
+        GroundedCheck();
+
         //プレイヤーとの距離がtracking内ならば追跡
-        if (tracking)
+        if (!CheckForObstacles())//tracking)
         {
             var currentPos = Time.deltaTime * speed / distanceToTarget;
             if (distanceToTarget > quitRange) tracking = false;
@@ -117,7 +120,7 @@ public class EnemyMove : MonoBehaviour
             {
 
                 //_animIDSpeed += 1;
-                _animator.SetFloat("Speed",navmeshAgent.desiredVelocity.magnitude);
+                _animator.SetFloat("Speed", navmeshAgent.desiredVelocity.magnitude);
             }
 
 
@@ -129,19 +132,33 @@ public class EnemyMove : MonoBehaviour
             if (distanceToTarget < trackingRange) tracking = true;
             //巡回地点がないときは処理をしない
             if (points.Count == 0) return;
-            //移動処理を実行
-            this.transform.position = Vector3.Lerp(transform.position, points[destPoint].transform.position, currentPos);
-            if (_hasAnimator)
+
+            if (!CheckForObstacles())
             {
-                //_animIDSpeed += 1;
-                _animator.SetFloat("Speed", navmeshAgent.desiredVelocity.magnitude);
-            }
+                //移動処理を実行
+                this.transform.position = Vector3.Lerp(transform.position, points[destPoint].transform.position, currentPos);
+                if (_hasAnimator)
+                {
+                    //_animIDSpeed += 1;
+                    _animator.SetFloat("Speed", navmeshAgent.desiredVelocity.magnitude);
+                }
                 //次の巡回地点を決定
                 if (currentPos >= 1)
-            {
-                
-                destPoint = (destPoint + 1) % points.Count;
+                {
+
+                    destPoint = (destPoint + 1) % points.Count;
+                }
             }
+        
         }
+    }
+    bool CheckForObstacles()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 1.0f, LayerMask.GetMask("Obstacle")))
+        {
+            return true; // Obstacle detected
+        }
+        return false; // No obstacle
     }
 }
