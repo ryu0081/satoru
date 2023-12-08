@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 333754467982506234}
   m_Layer: 0
   m_Name: shine1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4955,7 +4955,7 @@ GameObject:
   - component: {fileID: 333754468361143736}
   m_Layer: 0
   m_Name: shine
-  m_TagString: Beam
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9898,7 +9898,7 @@ GameObject:
   - component: {fileID: 333754468731772550}
   m_Layer: 0
   m_Name: grow
-  m_TagString: Beam
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14841,7 +14841,7 @@ GameObject:
   - component: {fileID: 4184576621448026333}
   m_Layer: 0
   m_Name: Enemycore
-  m_TagString: Beam
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19799,7 +19799,7 @@ GameObject:
   - component: {fileID: 4117044559079555099}
   m_Layer: 0
   m_Name: sparkSub
-  m_TagString: Beam
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24670,7 +24670,7 @@ GameObject:
   - component: {fileID: 176544854682380133}
   m_Layer: 0
   m_Name: smoke
-  m_TagString: Beam
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29567,7 +29567,7 @@ GameObject:
   - component: {fileID: 8102578217722530177}
   m_Layer: 0
   m_Name: Spark1
-  m_TagString: Beam
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34446,7 +34446,7 @@ GameObject:
   - component: {fileID: 7360600260155828874}
   m_Layer: 0
   m_Name: speakHorizontal
-  m_TagString: Beam
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39325,7 +39325,7 @@ GameObject:
   - component: {fileID: 5023553319899523617}
   m_Layer: 0
   m_Name: bot
-  m_TagString: Beam
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44204,7 +44204,7 @@ GameObject:
   - component: {fileID: 1499084934979838462}
   m_Layer: 0
   m_Name: Spark
-  m_TagString: Beam
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49114,7 +49114,7 @@ GameObject:
   - component: {fileID: 9012142236387182116}
   m_Layer: 0
   m_Name: shockwave
-  m_TagString: Beam
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
