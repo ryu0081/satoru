@@ -22,6 +22,10 @@ public class EnemyAttack : MonoBehaviour
 
     public int damage = 10; // ダメージ量
 
+    bool eAttack=false;
+
+    int counter;
+
     private void Awake()
     {
         // よくアクセスするゲームオブジェクトへの参照をキャッシュ
@@ -66,19 +70,26 @@ public class EnemyAttack : MonoBehaviour
         // 選択されたターゲットにダメージを与えるロジックを実装
         // 例: target.GetComponent<PlayerHealth>().TakeDamage(10);
         int randomPattern = Random.Range(1, 4); // 1から3までのランダムな数
+
+
         switch (randomPattern)
         {
+            
             case 1:
+                eAttack = true;
                 AttackPattern1();
                 Debug.Log(randomPattern);
                 break;
 
             case 2:
+                eAttack = true;
                 AttackPattern2();
                 Debug.Log(randomPattern);
+
                 break;
 
             case 3:
+                eAttack = true;
                 AttackPattern3();
                 Debug.Log(randomPattern);
                 break;
@@ -98,27 +109,48 @@ public class EnemyAttack : MonoBehaviour
 
     void AttackPattern1()  //satoruの攻撃
     {
+        counter++;
+        eAttack = true;
         obj = (GameObject)Instantiate(Attacks[0], satoruSpoon.transform.position, transform.rotation);
         this.obj.transform.parent=gameObject.transform;
         _animator.SetTrigger("1");
+        if(counter == 10) 
+        {
+            eAttack = false;
+        }
+
+        
         Debug.Log("敵が攻撃しました！");
        
     }
 
     void AttackPattern2()  //ビームの攻撃
     {
+        counter++;
+        eAttack = true;
         obj = (GameObject)Instantiate(Attacks[1], satoruSpoon.transform.position, transform.rotation);
         this.obj.transform.parent = gameObject.transform;
         _animator.SetTrigger("2");
+        
+        if (counter == 10)
+        {
+            eAttack = false;
+        }
         Debug.Log("敵が攻撃しました！");
         //StartCoroutine(ResetAnimationBool("2"));
     }
 
     void AttackPattern3()  //ホーミングの攻撃
     {
+        counter++;
+        eAttack = true;
         obj = (GameObject)Instantiate(Attacks[2], satoruSpoon.transform.position, transform.rotation);
         this.obj.transform.parent = gameObject.transform;
         _animator.SetTrigger("3");
+        if (counter == 10)
+        {
+            eAttack = false;
+        }
         Debug.Log("敵が攻撃しました！");
         //StartCoroutine(ResetAnimationBool("3"));
     }

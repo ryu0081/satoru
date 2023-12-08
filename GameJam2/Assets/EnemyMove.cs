@@ -59,7 +59,7 @@ public class EnemyMove : MonoBehaviour
     void OnEnable()
     {
         ////targetのゲームオブジェクトを取得
-        target = GameObject.FindGameObjectWithTag("Player");
+        target = GameObject.FindGameObjectWithTag("building");//Player
 
         //m_Animator = GetComponent<Animator>();
 
@@ -67,7 +67,7 @@ public class EnemyMove : MonoBehaviour
         for (int i = 0; i < pointGroup.transform.childCount; i++)
         {
             points.Add(pointGroup.transform.GetChild(i).gameObject.transform);
-            pointGroup.transform.GetChild(i).GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0);
+           // pointGroup.transform.GetChild(i).GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0);
         }
     }
     private void Start()

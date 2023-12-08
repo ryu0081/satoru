@@ -671,7 +671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d56667ad8abb6b418e0b96b6cc3b7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointGroup: {fileID: 0}
+  pointGroup: {fileID: 5212075621433212935, guid: 42b385e0d3934094fa4b35c8cd3866bc,
+    type: 3}
   navmeshAgent: {fileID: 4569779118907679251}
   destPoint: 0
   trackingRange: 30
@@ -702,7 +703,7 @@ MonoBehaviour:
   - {fileID: 531034932317582834, guid: 79c4ecb68925b68449456e57d2c868c1, type: 3}
   - {fileID: 333754469320472956, guid: 4d1a67a1f4568694bb99a2e3636bfcd0, type: 3}
   satoruSpoon: {fileID: 4569779119670927710}
-  damage: 10
+  damage: 100
 --- !u!54 &4569779118907679276
 Rigidbody:
   m_ObjectHideFlags: 0
