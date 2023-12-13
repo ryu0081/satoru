@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Battlec : MonoBehaviour
 {
-    public GameObject[] build;
+    public HPManger[] hm;
     bool[] isBreak;
     // Start is called before the first frame update
     void Start()
@@ -21,10 +21,10 @@ public class Battlec : MonoBehaviour
 
     void Result()
     {
-        isBreak[0] = build[0];
-        isBreak[1] = build[1];
-        isBreak[2] = build[2];
-        isBreak[3] = build[3];
+        isBreak[0] = hm[0].isFinish;
+        isBreak[1] = hm[1].isFinish;
+        isBreak[2] = hm[2].isFinish;
+        isBreak[3] = hm[3].isFinish;
 
         if(isBreak[0] && isBreak[1] && isBreak[2] && isBreak[3])
         {
