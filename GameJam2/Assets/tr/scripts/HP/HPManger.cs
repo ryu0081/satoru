@@ -12,7 +12,7 @@ public class HPManger : MonoBehaviour
     bool[] isPlayer = new bool[4];
     bool[] isEnemy = new bool[4];
 
-    float damage = 0.001f;
+    float damage = 0.01f;
 
     public float pScore = 0;           //プレイヤー用のスコア
     public float eScore = 0;           //Enemy用のスコア
