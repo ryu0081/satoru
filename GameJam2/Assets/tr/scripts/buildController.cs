@@ -15,7 +15,7 @@ public class buildController : MonoBehaviour
     GameObject effect;
     bool satorub;
 
-    Vector3 pos = new Vector3(0.0f, 20.0f, 0.0f);
+    Vector3 pos = new Vector3(0.0f, 5.0f, 0.0f);
 
     // Start is called before the first frame update
     void Start()
