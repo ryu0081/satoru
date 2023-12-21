@@ -50,6 +50,7 @@ namespace StarterAssets
         public float FallTimeout = 0.15f;
 
         [Header("Player Grounded")]
+        //キャラクターが接地しているかどうか。 CharacterController の組み込み接地チェックの一部ではありません
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
 
@@ -75,6 +76,7 @@ namespace StarterAssets
         [Tooltip("Additional degress to override the camera. Useful for fine tuning camera position when locked")]
         public float CameraAngleOverride = 0.0f;
 
+        //全軸のカメラ位置をロックする場合
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 

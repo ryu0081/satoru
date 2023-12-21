@@ -33,11 +33,14 @@ public class player : MonoBehaviour
     //public GameObject kubi;
     //Vector3 angle;//カメラの縦アングル
     //public float anglestop=30f;//アングル制御
+
+    private CharacterController controller;
     // Start is called before the first frame update
     void Start()
     {
         //maincamera = camera.GetComponent<Camera>();// Cameraの値を取得
-       
+
+        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -112,7 +115,11 @@ public class player : MonoBehaviour
         //    transform.position += movement * activeMoveSpeed * Time.deltaTime;
         //}
         //現在位置に進む方向＊移動スピード＊フレーム間秒数を足す
-        transform.position += movement * activeMoveSpeed * Time.deltaTime;
+        //transform.position += movement * activeMoveSpeed * Time.deltaTime;
+
+        //プレーヤーを動かす
+        controller.Move(movement * (activeMoveSpeed * Time.deltaTime));
+
     }
     //上昇、下降
     //void Fly()
@@ -169,7 +176,7 @@ public class player : MonoBehaviour
     //    {
     //        efectnunber = 2;
     //    }
-        
+
     //    if (Input.GetMouseButtonDown(0))
     //    {
     //        switch (efectnunber)
@@ -177,7 +184,7 @@ public class player : MonoBehaviour
     //            case 0:
     //                if(satobe)
     //                {
-                        
+
     //                    obj = (GameObject)Instantiate(satoruEfect[0], satorusppon.transform.position, transform.rotation);
     //                    obj.transform.parent = camera.transform;
     //                    satobe = false;
@@ -200,12 +207,12 @@ public class player : MonoBehaviour
     //                    obj.transform.parent = camera.transform;
     //                    satobe = false;
     //                }
-                   
+
     //                break;
     //        }
-            
-                
-            
+
+
+
     //        //攻撃処理をここに書く。
     //        //Instantiate(satoruEfect, satorusppon.transform.position, Quaternion.identity);
     //        //gameObject.transform.parent = satoruEfect.gameObject.transform;
