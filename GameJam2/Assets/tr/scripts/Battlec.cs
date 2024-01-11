@@ -16,7 +16,6 @@ public class Battlec : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isBreak[0]);
         Result();
     }
 

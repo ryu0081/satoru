@@ -110,16 +110,13 @@ public class SkillCoolTimecs : MonoBehaviour
             StartCoroutine("HomingAT");
         }
 
-
-
-
-
     }
 
     IEnumerator SatoruAT()                                          //攻撃1のクールタイム
     {
         isOne = false;
         isSatoru = false;
+        isbefoS = false;
         for (int i = sTime; i >= 0; i--)
         {
             if (i == 0)
@@ -140,6 +137,8 @@ public class SkillCoolTimecs : MonoBehaviour
     {
         isTwo = false;
         isBeam = false;
+        isbefoB = false;
+
         for (int i = bTime; i >= 0; i--)
         {
             if (i == 0)
@@ -159,6 +158,9 @@ public class SkillCoolTimecs : MonoBehaviour
     {
         isThree = false;
         isHoming = false;
+        isbefoH = false;
+
+
         for (int i = hTime; i >= 0; i--)
         {
             if (i == 0)

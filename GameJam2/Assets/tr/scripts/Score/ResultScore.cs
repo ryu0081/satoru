@@ -16,6 +16,8 @@ public class ResultScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sm = GameObject.Find("pScore").GetComponent<ScoreManager>();
+        sm2 = GameObject.Find("eScore").GetComponent<ScoreManager2>();
     }
 
     // Update is called once per frame
