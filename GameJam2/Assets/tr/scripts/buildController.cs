@@ -62,7 +62,7 @@ public class buildController : MonoBehaviour
             isDamage = true;
             //エフェクトを発生させる
             GenerateEffect();
-        }else if(other.gameObject.tag == "Enemy")
+        }else if(other.gameObject.tag == "EnemyBeam")
         {
             isEnemy = true;
             isDamage = true;
@@ -71,7 +71,7 @@ public class buildController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Beam" || other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Beam" || other.gameObject.tag == "EnemyBeam")
         {
             isDamage = false;
             Destroy(effect);
